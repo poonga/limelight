@@ -24,10 +24,19 @@ ActiveRecord::Schema.define(version: 20180103042254) do
     t.string "authorization_status"
     t.string "linkedin_url"
     t.string "website_url"
+    t.string "referral"
     t.string "gender"
     t.string "ethnicity"
     t.string "veteran_status"
     t.string "disability_status"
+    t.string "resume_file_name"
+    t.string "resume_content_type"
+    t.integer "resume_file_size"
+    t.datetime "resume_updated_at"
+    t.string "cover_letter_file_name"
+    t.string "cover_letter_content_type"
+    t.integer "cover_letter_file_size"
+    t.datetime "cover_letter_updated_at"
     t.integer "job_posting_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,7 +47,6 @@ ActiveRecord::Schema.define(version: 20180103042254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "logo"
-    t.string "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
   end
 
   create_table "job_postings", force: :cascade do |t|
@@ -77,10 +85,13 @@ ActiveRecord::Schema.define(version: 20180103042254) do
     t.string "last_name", null: false
     t.string "username", null: false
     t.boolean "is_admin", default: false, null: false
+    t.string "email"
+    t.string "icon_file_name"
+    t.string "icon_content_type"
+    t.integer "icon_file_size"
+    t.datetime "icon_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
-    t.string "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
     t.integer "company_id"
   end
 

@@ -5,6 +5,7 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.integer "company_id", null: false
       t.timestamps
     end
+
     create_table :job_postings do |t|
       t.string "title", null: false
       t.string "type"
@@ -15,6 +16,7 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.integer "company_id", null: false
       t.timestamps
     end
+
     create_table :applicants do |t|
       t.string "first_name", null: false
       t.string "last_name", null: false
@@ -24,12 +26,17 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.string "authorization_status"
       t.string "linkedin_url"
       t.string "website_url"
+      t.string "referral"
       t.string "gender"
       t.string "ethnicity"
       t.string "veteran_status"
       t.string "disability_status"
+      t.attachment "resume"
+      t.attachment "cover_letter"
       t.integer "job_posting_id", null: false
       t.timestamps
+    end
+
     create_table :locations do |t|
       t.string "address", null: false
       t.string "address2"
@@ -39,7 +46,6 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.string "country", null: false
       t.integer "company_id", null: false
       t.timestamps
-    end
     end
   end
 end
