@@ -20,22 +20,20 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'font-awesome-rails'
+gem 'bootstrap-social-rails'
 gem 'jquery-rails'
 
 # Easy upload management for ActiveRecord
 gem 'paperclip', '~> 5.1.0'
+# User Authentication
+gem 'devise'
+gem 'omniauth-google-oauth2'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'pry-nav'             # Debugger with 'next', 'continue' options
