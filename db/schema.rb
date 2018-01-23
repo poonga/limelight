@@ -83,16 +83,15 @@ ActiveRecord::Schema.define(version: 20180103042254) do
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "username", null: false
     t.boolean "is_admin", default: false, null: false
     t.string "email"
-    t.string "icon_file_name"
-    t.string "icon_content_type"
-    t.integer "icon_file_size"
-    t.datetime "icon_updated_at"
+    t.string "uid"
+    t.string "provider"
+    t.string "icon"
+    t.boolean "active", default: true
+    t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "company_id"
   end
 
 end
