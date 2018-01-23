@@ -25,7 +25,7 @@ gem 'bootstrap-social-rails'
 gem 'jquery-rails'
 
 # Easy upload management for ActiveRecord
-gem 'paperclip', '~> 5.1.0'
+gem 'paperclip', '~> 5.2.0'
 # User Authentication
 gem 'devise'
 gem 'omniauth-google-oauth2'
