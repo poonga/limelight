@@ -43,6 +43,7 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (7.1.6)
       execjs
+    awesome_print (1.8.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap (4.0.0.beta2.1)
@@ -51,6 +52,7 @@ GEM
       sass (>= 3.5.2)
     bootstrap-social-rails (4.12.0)
       railties (>= 3.1)
+    bootstrap_form (2.7.0)
     builder (3.2.3)
     capybara (2.15.4)
       addressable
@@ -296,8 +298,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bootstrap (~> 4.0.0.beta2.1)
   bootstrap-social-rails
+  bootstrap_form
   capybara
   database_cleaner
   devise
