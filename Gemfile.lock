@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/bootstrap-ruby/bootstrap_form.git
+  revision: 8a7188fbb2d55bbd6c64f9130e7882eea56bfee9
+  branch: master
+  specs:
+    bootstrap_form (4.0.0.dev)
+      rails (>= 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -41,18 +49,17 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
-    autoprefixer-rails (7.1.6)
+    autoprefixer-rails (7.2.5)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
-    bootstrap (4.0.0.beta2.1)
+    bootstrap (4.0.0)
       autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.3, < 2)
+      popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
     bootstrap-social-rails (4.12.0)
       railties (>= 3.1)
-    bootstrap_form (2.7.0)
     builder (3.2.3)
     capybara (2.15.4)
       addressable
@@ -173,7 +180,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.21.0)
-    popper_js (1.12.5)
+    popper_js (1.12.9)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -299,9 +306,9 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bootstrap (~> 4.0.0.beta2.1)
+  bootstrap (~> 4.0.0)
   bootstrap-social-rails
-  bootstrap_form
+  bootstrap_form!
   capybara
   database_cleaner
   devise

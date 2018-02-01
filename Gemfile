@@ -20,10 +20,10 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Bootstrap forms/components
-gem 'bootstrap_form'
-gem 'bootstrap', '~> 4.0.0.beta2.1'
-gem 'font-awesome-rails'
+gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap_form', git: "https://github.com/bootstrap-ruby/bootstrap_form.git", branch: "master"
 gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
 
 gem 'jquery-rails'
 
@@ -39,7 +39,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
-  gem 'awesome_print'
+  gem 'awesome_print'       # Nicely format fields of objects
   gem 'pry-nav'             # Debugger with 'next', 'continue' options
   gem 'dotenv-rails'
   gem 'rspec-rails'
