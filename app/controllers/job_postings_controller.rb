@@ -24,7 +24,12 @@ class JobPostingsController < ApplicationController
   # POST /job_postings
   # POST /job_postings.json
   def create
-    @job_posting = JobPosting.new(job_posting_params)
+    @params = job_posting_params
+
+    @company_id = User.find_by(id: session[:user_id]).company_id
+    @params[:company_id] = @company_id
+
+    @job_posting = JobPosting.new(@params)
 
     respond_to do |format|
       if @job_posting.save
@@ -69,6 +74,11 @@ class JobPostingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_posting_params
-      params.fetch(:job_posting, {})
+      params.require(:job_posting).permit(
+        :title,
+        :job_type,
+        :description,
+        :min_salary,
+        :years_of_experience);
+      end
     end
-end

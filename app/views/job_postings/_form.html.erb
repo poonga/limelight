@@ -22,31 +22,25 @@
         <div class="form-group">
             <label class="col-lg-3 control-label">Type</label>
             <div class="col-lg-8">
-                <%= form.text_field :title, :class => "form-control" %>
+                <%= form.text_field :type, :class => "form-control" %>
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Description</label>
             <div class="col-lg-8">
-                <%= form.text_field :title, :class => "form-control" %>
+                <%= form.text_field :description, :class => "form-control" %>
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Salary</label>
             <div class="col-lg-8">
-                <%= form.text_field :title, :class => "form-control" %>
+                <%= form.text_field :min_salary, :class => "form-control" %>
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Years of Experience</label>
             <div class="col-lg-8">
-                <%= form.text_field :title, :class => "form-control" %>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Team</label>
-            <div class="col-lg-8">
-                <%= form.text_field :title, :class => "form-control" %>
+                <%= form.number_field :years_of_experience, :class => "form-control" %>
             </div>
         </div>
     </div>
