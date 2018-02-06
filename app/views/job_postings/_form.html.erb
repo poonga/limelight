@@ -11,39 +11,13 @@
 </div>
 <% end %>
 
-<form class="form-horizontal" role="form">
-    <div class="container">
-        <div class="form-group">
-            <div class="col-lg-8">
-                <%= form.text_field :title, :class => "form-control",
-                 label: "Job Title" %>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-8">
-                <%= form.text_field :job_type, :class => "form-control",
-                label: "Type" %>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-8">
-                <%= form.text_field :description, :class => "form-control",
-                label: "Description" %>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-8">
-                <%= form.text_field :min_salary, :class => "form-control",
-                label: "Salary" %>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-8">
-                <%= form.number_field :years_of_experience, :class => "form-control",
-                label: "Years of Experience" %>
-            </div>
-        </div>
-    </div>
+<div class='row'>
+  <div class='col-sm-6 col-offset-3'>
+    <%= form.text_field :job_type, label: "Type" %>
+    <%= form.text_field :description, label: "Description" %>
+    <%= form.text_field :min_salary, label: "Salary" %>
+    <%= form.number_field :years_of_experience, label: "Years of Experience" %>
+  </div>
 </div>
 
 <div class="actions">
