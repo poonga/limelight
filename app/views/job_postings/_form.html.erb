@@ -1,4 +1,4 @@
-<%= form_with(model: job_posting, local: true) do |form| %>
+<%= bootstrap_form_with(model: job_posting, local: true) do |form| %>
 <% if job_posting.errors.any? %>
 <div id="error_explanation">
     <h2><%= pluralize(job_posting.errors.count, "error") %> prohibited this job_posting from being saved:</h2>
@@ -14,33 +14,33 @@
 <form class="form-horizontal" role="form">
     <div class="container">
         <div class="form-group">
-            <label class="col-lg-3 control-label">Job Title</label>
             <div class="col-lg-8">
-                <%= form.text_field :title, :class => "form-control" %>
+                <%= form.text_field :title, :class => "form-control",
+                 label: "Job Title" %>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Type</label>
             <div class="col-lg-8">
-                <%= form.text_field :job_type, :class => "form-control" %>
+                <%= form.text_field :job_type, :class => "form-control",
+                label: "Type" %>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Description</label>
             <div class="col-lg-8">
-                <%= form.text_field :description, :class => "form-control" %>
+                <%= form.text_field :description, :class => "form-control",
+                label: "Description" %>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Salary</label>
             <div class="col-lg-8">
-                <%= form.text_field :min_salary, :class => "form-control" %>
+                <%= form.text_field :min_salary, :class => "form-control",
+                label: "Salary" %>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Years of Experience</label>
             <div class="col-lg-8">
-                <%= form.number_field :years_of_experience, :class => "form-control" %>
+                <%= form.number_field :years_of_experience, :class => "form-control",
+                label: "Years of Experience" %>
             </div>
         </div>
     </div>
