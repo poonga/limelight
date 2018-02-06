@@ -19,9 +19,12 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'bootstrap', '~> 4.0.0.beta2.1'
-gem 'font-awesome-rails'
+# Bootstrap forms/components
+gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap_form', git: "https://github.com/bootstrap-ruby/bootstrap_form.git", branch: "master"
 gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
+
 gem 'jquery-rails'
 
 # Easy upload management for ActiveRecord
@@ -36,6 +39,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
+  gem 'awesome_print'       # Nicely format fields of objects
   gem 'pry-nav'             # Debugger with 'next', 'continue' options
   gem 'dotenv-rails'
   gem 'rspec-rails'
