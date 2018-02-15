@@ -8,7 +8,7 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
 
     create_table :job_postings do |t|
       t.string "title", null: false
-      t.string "type"
+      t.string "job_type"
       t.string "description"
       t.decimal "min_salary"
       t.integer "years_of_experience"

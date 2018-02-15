@@ -1,17 +1,26 @@
-<%= form_with(model: job_posting, local: true) do |form| %>
-  <% if job_posting.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(job_posting.errors.count, "error") %> prohibited this job_posting from being saved:</h2>
+<%= bootstrap_form_with(model: job_posting, local: true) do |form| %>
+<% if job_posting.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(job_posting.errors.count, "error") %> prohibited this job_posting from being saved:</h2>
 
-      <ul>
-      <% job_posting.errors.full_messages.each do |message| %>
+    <ul>
+        <% job_posting.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <% end %>
+    </ul>
+</div>
+<% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class='row'>
+  <div class='col-sm-6 col-offset-3'>
+    <%= form.text_field :job_type, label: "Type" %>
+    <%= form.text_field :description, label: "Description" %>
+    <%= form.text_field :min_salary, label: "Salary" %>
+    <%= form.number_field :years_of_experience, label: "Years of Experience" %>
   </div>
+</div>
+
+<div class="actions">
+    <%= form.submit %>
+</div>
 <% end %>
