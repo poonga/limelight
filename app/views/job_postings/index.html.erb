@@ -10,13 +10,7 @@
   </thead>
 
   <tbody>
-    <% @job_postings.each do |job_posting| %>
-      <tr>
-        <td><%= link_to 'Show', job_posting %></td>
-        <td><%= link_to 'Edit', edit_job_posting_path(job_posting) %></td>
-        <td><%= link_to 'Destroy', job_posting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+      <%= render 'grid', job_posting: @job_posting %>
   </tbody>
 </table>
 

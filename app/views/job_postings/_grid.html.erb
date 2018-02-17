@@ -1,0 +1,24 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Job Type</th>
+      <th scope="col">Salary Offer</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @job_postings.each do |job_posting| %>
+    <tr>
+        <td><%= job_posting.title %></td>
+        <td><%= job_posting.job_type %></td>
+        <td><%= job_posting.min_salary %></td>
+        <td>
+            <%= link_to 'Show', job_posting %>
+            <%= link_to 'Edit', edit_job_posting_path(job_posting) %>
+            <%= link_to 'Destroy', job_posting, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
