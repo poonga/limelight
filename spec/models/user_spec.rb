@@ -11,8 +11,8 @@
 #  provider   :string
 #  icon       :string
 #  active     :boolean          default(TRUE)
-#  company_id :integer
-#  slug       :string           not null
+#  company_id :integer          not null
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
