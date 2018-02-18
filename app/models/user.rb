@@ -1,4 +1,26 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  first_name :string           not null
+#  last_name  :string           not null
+#  is_admin   :boolean          default(FALSE), not null
+#  email      :string
+#  uid        :string
+#  provider   :string
+#  icon       :string
+#  active     :boolean          default(TRUE)
+#  company_id :integer          not null
+#  slug       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class User < ApplicationRecord
+  extend FriendlyId
+
+  friendly_id :full_name, use: :slugged
   belongs_to  :company
 
   def self.find_or_create_from_auth_hash(auth)
@@ -11,7 +33,10 @@ class User < ApplicationRecord
       user.icon = auth.info.image
       company_name = auth.extra.raw_info.hd ? auth.extra.raw_info.hd.split('.')[0] : 'Independent Agency'
       user.company = Company.find_or_create_by(name: company_name)
-      user.save!
     end
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end

@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.5.0
+notifications:
+  slack: project-491:oDjq5s34pM3u8Tq6SXafESpT
+  on_success: always
+  on_failure: always

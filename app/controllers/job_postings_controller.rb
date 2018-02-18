@@ -1,5 +1,7 @@
 class JobPostingsController < ApplicationController
+  skip_before_action :ensure_signed_in, only: [:show]
   before_action :set_job_posting, only: [:show, :edit, :update, :destroy]
+  before_action :set_company
 
   # GET /job_postings
   # GET /job_postings.json
@@ -67,18 +69,23 @@ class JobPostingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_job_posting
-      @job_posting = JobPosting.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_job_posting
+    @job_posting = JobPosting.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def job_posting_params
-      params.require(:job_posting).permit(
-        :title,
-        :job_type,
-        :description,
-        :min_salary,
-        :years_of_experience);
-      end
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def job_posting_params
+    params.require(:job_posting).permit(
+      :title,
+      :type,
+      :description,
+      :min_salary,
+      :years_of_experience
+    );
+  end
+
+  def set_company
+    @company = Company.friendly.find params[:company_id]
+  end
+end

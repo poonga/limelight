@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103042254) do
+ActiveRecord::Schema.define(version: 20180218010313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "applicants", force: :cascade do |t|
     t.string "first_name", null: false
@@ -37,28 +38,50 @@ ActiveRecord::Schema.define(version: 20180103042254) do
     t.string "cover_letter_content_type"
     t.integer "cover_letter_file_size"
     t.datetime "cover_letter_updated_at"
-    t.integer "job_posting_id", null: false
+    t.bigint "job_posting_id", null: false
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["job_posting_id"], name: "index_applicants_on_job_posting_id"
+    t.index ["slug"], name: "index_applicants_on_slug"
   end
 
   create_table "companies", force: :cascade do |t|
     t.string "name", null: false
+    t.string "logo"
+    t.integer "job_postings_count", default: 0, null: false
+    t.string "slug", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "logo"
+    t.index ["slug"], name: "index_companies_on_slug"
   end
 
-  create_table "job_postings", force: :cascade do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "job_postings", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }
     t.string "title", null: false
-    t.string "job_type"
+    t.string "type"
     t.string "description"
     t.decimal "min_salary"
     t.integer "years_of_experience"
-    t.integer "team_id"
-    t.integer "company_id", null: false
+    t.integer "applicants_count", default: 0, null: false
+    t.bigint "team_id", null: false
+    t.uuid "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_job_postings_on_company_id"
+    t.index ["team_id"], name: "index_job_postings_on_team_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -68,16 +91,22 @@ ActiveRecord::Schema.define(version: 20180103042254) do
     t.string "district"
     t.string "postal_code"
     t.string "country", null: false
-    t.integer "company_id", null: false
+    t.bigint "company_id", null: false
+    t.string "slug", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_locations_on_company_id"
+    t.index ["slug"], name: "index_locations_on_slug"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "company_id", null: false
+    t.bigint "company_id", null: false
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_teams_on_company_id"
+    t.index ["slug"], name: "index_teams_on_slug"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,9 +118,12 @@ ActiveRecord::Schema.define(version: 20180103042254) do
     t.string "provider"
     t.string "icon"
     t.boolean "active", default: true
-    t.integer "company_id"
+    t.bigint "company_id", null: false
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["slug"], name: "index_users_on_slug"
   end
 
 end
