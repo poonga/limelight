@@ -1,0 +1,11 @@
+<% content_for :title, '500 - Internal Server Error' %>
+
+<% content_for :h1 do %>
+  <h1>500 - Internal Server Error</h1>
+<% end %>
+
+<% content_for :jumbotron do %>
+  <h3>Looks like you found a bug in the application!</h3>
+  <p>Don’t worry, the programmers have been notified, and will contact you soon.</p>
+  <p><%= link_with_icon_to :home, 'Back to the home-page', root_path %></p>
+<% end %>

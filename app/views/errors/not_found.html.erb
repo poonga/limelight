@@ -1,0 +1,10 @@
+<% content_for :title, 'Page Not Found' %>
+
+<% content_for :h1 do %>
+  <h1>Page Not Found</h1>
+<% end %>
+
+<% content_for :jumbotron do %>
+  <h3>You may have mistyped the address or the page may have moved.</h3>
+  <p><%= link_with_icon_to :home, 'Back to the home-page', root_path %></p>
+<% end %>

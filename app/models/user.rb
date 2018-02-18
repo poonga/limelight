@@ -33,7 +33,6 @@ class User < ApplicationRecord
       user.icon = auth.info.image
       company_name = auth.extra.raw_info.hd ? auth.extra.raw_info.hd.split('.')[0] : 'Independent Agency'
       user.company = Company.find_or_create_by(name: company_name)
-      user.save!
     end
   end
 

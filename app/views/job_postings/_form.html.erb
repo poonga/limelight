@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: job_posting, local: true) do |form| %>
+<%= bootstrap_form_with(model: job_posting, url: company_job_postings_path(@company), local: true) do |form| %>
 <% if job_posting.errors.any? %>
 <div id="error_explanation">
     <h2><%= pluralize(job_posting.errors.count, "error") %> prohibited this job_posting from being saved:</h2>
