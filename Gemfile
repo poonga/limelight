@@ -26,6 +26,8 @@ gem 'font-awesome-rails'
 
 gem 'jquery-rails'
 
+# Slugging and permalink plugins for Active Record
+gem 'friendly_id', '~> 5.1.0'
 # Easy upload management for ActiveRecord
 gem 'paperclip', '~> 5.2.0'
 # User Authentication

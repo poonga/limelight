@@ -9,7 +9,9 @@
 #  min_salary          :decimal(, )
 #  years_of_experience :integer
 #  team_id             :integer
+#  applicants_count    :integer          default(0), not null
 #  company_id          :integer          not null
+#  slug                :string           not null
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #

@@ -25,12 +25,16 @@
 #  cover_letter_file_size    :integer
 #  cover_letter_updated_at   :datetime
 #  job_posting_id            :integer          not null
+#  slug                      :string           not null
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #
 
 class Applicant < ApplicationRecord
-  belongs_to  :job_posting
+  extend FriendlyId
+  
+  friendly_id :first_name, use: :slugged
+  belongs_to  :job_posting, counter_cache: true 
   has_attached_file :resume
   has_attached_file :cover_letter
 end

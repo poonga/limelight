@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string           not null
 #  company_id :integer          not null
+#  slug       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

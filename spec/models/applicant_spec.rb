@@ -25,6 +25,7 @@
 #  cover_letter_file_size    :integer
 #  cover_letter_updated_at   :datetime
 #  job_posting_id            :integer          not null
+#  slug                      :string           not null
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #

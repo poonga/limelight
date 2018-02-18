@@ -12,11 +12,15 @@
 #  icon       :string
 #  active     :boolean          default(TRUE)
 #  company_id :integer
+#  slug       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class User < ApplicationRecord
+  extend FriendlyId
+
+  friendly_id :full_name, use: :slugged
   belongs_to  :company
 
   def self.find_or_create_from_auth_hash(auth)
@@ -31,5 +35,9 @@ class User < ApplicationRecord
       user.company = Company.find_or_create_by(name: company_name)
       user.save!
     end
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end
