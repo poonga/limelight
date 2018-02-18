@@ -48,12 +48,21 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    annotate (2.7.2)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 13.0)
     arel (8.0.0)
     autoprefixer-rails (7.2.5)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.11)
+    better_errors (2.4.0)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
     bindex (0.5.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     bootstrap (4.0.0)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
@@ -75,6 +84,7 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.2)
     database_cleaner (1.6.2)
+    debug_inspector (0.0.3)
     devise (4.4.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -305,7 +315,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   awesome_print
+  better_errors
+  binding_of_caller
   bootstrap (~> 4.0.0)
   bootstrap-social-rails
   bootstrap_form!
