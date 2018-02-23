@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(version: 20180218010313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
+  enable_extension "pgcrypto"
 
-  create_table "applicants", force: :cascade do |t|
+  create_table "applicants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "email"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180218010313) do
     t.index ["slug"], name: "index_applicants_on_slug"
   end
 
-  create_table "companies", force: :cascade do |t|
+  create_table "companies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "logo"
     t.integer "job_postings_count", default: 0, null: false
@@ -68,8 +68,7 @@ ActiveRecord::Schema.define(version: 20180218010313) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "job_postings", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.uuid "uuid", default: -> { "uuid_generate_v4()" }
+  create_table "job_postings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.string "type"
     t.string "description"
@@ -77,14 +76,14 @@ ActiveRecord::Schema.define(version: 20180218010313) do
     t.integer "years_of_experience"
     t.integer "applicants_count", default: 0, null: false
     t.bigint "team_id", null: false
-    t.uuid "company_id", null: false
+    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_job_postings_on_company_id"
     t.index ["team_id"], name: "index_job_postings_on_team_id"
   end
 
-  create_table "locations", force: :cascade do |t|
+  create_table "locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "address", null: false
     t.string "address2"
     t.string "city", null: false
@@ -99,7 +98,7 @@ ActiveRecord::Schema.define(version: 20180218010313) do
     t.index ["slug"], name: "index_locations_on_slug"
   end
 
-  create_table "teams", force: :cascade do |t|
+  create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.bigint "company_id", null: false
     t.string "slug"
@@ -109,7 +108,7 @@ ActiveRecord::Schema.define(version: 20180218010313) do
     t.index ["slug"], name: "index_teams_on_slug"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.boolean "is_admin", default: false, null: false

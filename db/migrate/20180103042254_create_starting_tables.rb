@@ -1,8 +1,8 @@
 class CreateStartingTables < ActiveRecord::Migration[5.1]
   def change
-    enable_extension 'uuid-ossp'
+    enable_extension 'pgcrypto'
 
-    create_table :companies do |t|
+    create_table :companies, id: :uuid do |t|
       t.string      :name, null: false
       t.string      :logo
       t.integer     :job_postings_count, default: 0, null: false
@@ -10,7 +10,7 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    create_table :users do |t|
+    create_table :users, id: :uuid do |t|
       t.string      :first_name, null: false
       t.string      :last_name, null: false
       t.boolean     :is_admin, default: false, null: false
@@ -24,15 +24,14 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    create_table :teams do |t|
+    create_table :teams, id: :uuid do |t|
       t.string      :name, null: false
       t.belongs_to  :company, index: true, null: false
       t.string      :slug, unique: true, index: true
       t.timestamps
     end
 
-    create_table :job_postings, id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-      t.uuid        :uuid, default: "uuid_generate_v4()"
+    create_table :job_postings, id: :uuid do |t|
       t.string      :title, null: false
       t.string      :type
       t.string      :description
@@ -40,11 +39,11 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.integer     :years_of_experience
       t.integer     :applicants_count, default: 0, null: false
       t.belongs_to  :team, index: true, null: false
-      t.belongs_to  :company, type: :uuid, index: true, null: false
+      t.belongs_to  :company, index: true, null: false
       t.timestamps
     end
 
-    create_table :applicants do |t|
+    create_table :applicants, id: :uuid do |t|
       t.string      :first_name, null: false
       t.string      :last_name, null: false
       t.string      :email
@@ -65,7 +64,7 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.timestamps
     end
     
-    create_table :locations do |t|
+    create_table :locations, id: :uuid do |t|
       t.string      :address, null: false
       t.string      :address2
       t.string      :city, null: false
