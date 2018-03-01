@@ -12,7 +12,7 @@
     <tr>
         <td><%= job_posting.title %></td>
         <td><%= job_posting.team.name%></td>
-        <td><%= job_posting.min_salary %></td>
+        <td><%= number_to_currency(job_posting.min_salary.to_f, delimiter: '', unit: '') %></td>
         <td>
             <%= link_to 'Show', company_job_posting_path(@company, job_posting) %>
             <%= link_to 'Edit', edit_company_job_posting_path(@company, job_posting) %>

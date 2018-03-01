@@ -25,7 +25,7 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
     end
 
     create_table :teams, id: :uuid do |t|
-      t.string      :name, null: false
+      t.string      :name, null: false, unique:true
       t.belongs_to  :company, type: :uuid, index: true, null: false
       t.string      :slug, unique: true, index: true
       t.timestamps

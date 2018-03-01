@@ -6,7 +6,7 @@ class JobPostingsController < ApplicationController
   # GET /job_postings
   # GET /job_postings.json
   def index
-    @job_postings = JobPosting.all
+    @job_postings = JobPosting.all.includes(:team)
   end
 
   # GET /job_postings/1
@@ -26,14 +26,7 @@ class JobPostingsController < ApplicationController
   # POST /job_postings
   # POST /job_postings.json
   def create
-    input_params = job_posting_params
-
-    team_name = input_params.delete(:team_name)
-    team = Team.find_or_create_by(name: team_name, company_id: @company.id)
-
-    input_params.merge!({"team_id" => team.id, "company_id" => @company.id.to_s})
-    @job_posting = JobPosting.new(input_params)
-
+    @job_posting = JobPosting.new(filtered_params)
     if @job_posting.save
       redirect_to company_job_posting_path(@company, @job_posting), notice: 'Job posting was successfully created.'
     else
@@ -80,6 +73,12 @@ class JobPostingsController < ApplicationController
       :min_salary,
       :years_of_experience
     )
+  end
+
+  def filtered_params
+    params = job_posting_params
+    team = Team.find_or_create_by(name: params.delete(:team_name), company_id: @company.id)
+    params.merge(team_id: team.id, company_id: @company.id.to_s)
   end
 
   def set_company

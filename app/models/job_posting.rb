@@ -18,6 +18,10 @@
 
 class JobPosting < ApplicationRecord
   belongs_to  :company, counter_cache: true
-  belongs_to  :team 
+  belongs_to  :team
   has_many    :applicants
+
+  validates   :title, presence: true
+  validates   :min_salary, numericality: true
+  validates   :years_of_experience, numericality: { only_integer: true }, presence: true
 end
