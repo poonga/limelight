@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20180218010313) do
     t.string "cover_letter_content_type"
     t.integer "cover_letter_file_size"
     t.datetime "cover_letter_updated_at"
-    t.bigint "job_posting_id", null: false
+    t.uuid "job_posting_id", null: false
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20180218010313) do
     t.decimal "min_salary"
     t.integer "years_of_experience"
     t.integer "applicants_count", default: 0, null: false
-    t.bigint "team_id", null: false
-    t.bigint "company_id", null: false
+    t.uuid "team_id", null: false
+    t.uuid "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_job_postings_on_company_id"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20180218010313) do
     t.string "district"
     t.string "postal_code"
     t.string "country", null: false
-    t.bigint "company_id", null: false
+    t.uuid "company_id", null: false
     t.string "slug", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20180218010313) do
 
   create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "company_id", null: false
+    t.uuid "company_id", null: false
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20180218010313) do
     t.string "provider"
     t.string "icon"
     t.boolean "active", default: true
-    t.bigint "company_id", null: false
+    t.uuid "company_id", null: false
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

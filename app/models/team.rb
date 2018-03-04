@@ -12,7 +12,9 @@
 
 class Team < ApplicationRecord
   extend FriendlyId
-  
+
   friendly_id :name, use: :slugged
   belongs_to  :company
+
+  validates   :name, presence: true, uniqueness: true
 end

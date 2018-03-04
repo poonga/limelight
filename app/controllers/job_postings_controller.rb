@@ -6,7 +6,7 @@ class JobPostingsController < ApplicationController
   # GET /job_postings
   # GET /job_postings.json
   def index
-    @job_postings = JobPosting.all
+    @job_postings = JobPosting.all.includes(:team)
   end
 
   # GET /job_postings/1
@@ -26,21 +26,11 @@ class JobPostingsController < ApplicationController
   # POST /job_postings
   # POST /job_postings.json
   def create
-    @params = job_posting_params
-
-    @company_id = User.find_by(id: session[:user_id]).company_id
-    @params[:company_id] = @company_id
-
-    @job_posting = JobPosting.new(@params)
-
-    respond_to do |format|
-      if @job_posting.save
-        format.html { redirect_to @job_posting, notice: 'Job posting was successfully created.' }
-        format.json { render :show, status: :created, location: @job_posting }
-      else
-        format.html { render :new }
-        format.json { render json: @job_posting.errors, status: :unprocessable_entity }
-      end
+    @job_posting = JobPosting.new(filtered_params)
+    if @job_posting.save
+      redirect_to company_job_posting_path(@company, @job_posting), notice: 'Job posting was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -49,7 +39,7 @@ class JobPostingsController < ApplicationController
   def update
     respond_to do |format|
       if @job_posting.update(job_posting_params)
-        format.html { redirect_to @job_posting, notice: 'Job posting was successfully updated.' }
+        format.html { redirect_to company_job_posting_path(@company, @job_posting), notice: 'Job posting was successfully updated.' }
         format.json { render :show, status: :ok, location: @job_posting }
       else
         format.html { render :edit }
@@ -63,7 +53,7 @@ class JobPostingsController < ApplicationController
   def destroy
     @job_posting.destroy
     respond_to do |format|
-      format.html { redirect_to job_postings_url, notice: 'Job posting was successfully destroyed.' }
+      format.html { redirect_to company_job_postings_path(@company), notice: 'Job posting was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -78,11 +68,17 @@ class JobPostingsController < ApplicationController
   def job_posting_params
     params.require(:job_posting).permit(
       :title,
-      :type,
+      :team_name,
       :description,
       :min_salary,
       :years_of_experience
-    );
+    )
+  end
+
+  def filtered_params
+    params = job_posting_params
+    team = Team.find_or_create_by(name: params.delete(:team_name), company_id: @company.id)
+    params.merge(team_id: team.id, company_id: @company.id.to_s)
   end
 
   def set_company

@@ -19,14 +19,14 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.string      :provider
       t.string      :icon
       t.boolean     :active, default: true
-      t.belongs_to  :company, index: true, null: false
+      t.belongs_to  :company, type: :uuid, index: true, null: false
       t.string      :slug, unique: true, index: true
       t.timestamps
     end
 
     create_table :teams, id: :uuid do |t|
-      t.string      :name, null: false
-      t.belongs_to  :company, index: true, null: false
+      t.string      :name, null: false, unique:true
+      t.belongs_to  :company, type: :uuid, index: true, null: false
       t.string      :slug, unique: true, index: true
       t.timestamps
     end
@@ -38,8 +38,8 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.decimal     :min_salary
       t.integer     :years_of_experience
       t.integer     :applicants_count, default: 0, null: false
-      t.belongs_to  :team, index: true, null: false
-      t.belongs_to  :company, index: true, null: false
+      t.belongs_to  :team, type: :uuid, index: true, null: false
+      t.belongs_to  :company, type: :uuid, index: true, null: false
       t.timestamps
     end
 
@@ -59,11 +59,11 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.string      :disability_status
       t.attachment  :resume
       t.attachment  :cover_letter
-      t.belongs_to  :job_posting, index: true, null: false
+      t.belongs_to  :job_posting, type: :uuid, index: true, null: false
       t.string      :slug, unique: true, index: true
       t.timestamps
     end
-    
+
     create_table :locations, id: :uuid do |t|
       t.string      :address, null: false
       t.string      :address2
@@ -71,7 +71,7 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
       t.string      :district
       t.string      :postal_code
       t.string      :country, null: false
-      t.belongs_to  :company, index: true, null: false
+      t.belongs_to  :company, type: :uuid, index: true, null: false
       t.string      :slug, null: false, index: true, unique: true
       t.timestamps
     end

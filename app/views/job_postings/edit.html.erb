@@ -2,5 +2,5 @@
 
 <%= render 'form', job_posting: @job_posting %>
 
-<%= link_to 'Show', @job_posting %> |
-<%= link_to 'Back', job_postings_path %>
+<%= link_to 'Show', company_job_posting_path(@company, @job_posting)%> |
+<%= link_to 'Back', company_job_postings_path(@company) %>
