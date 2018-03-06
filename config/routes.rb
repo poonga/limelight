@@ -16,14 +16,10 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#auth'
   get 'auth/failure', to: redirect('/')
   get 'authentication', to: 'static_pages#authentication'
-
-  scope via: :all do
-    match '/400', to: 'errors#bad_request'
-    match '/404', to: 'errors#not_found'
-    match '/406', to: 'errors#unknown_format'
-    match '/422', to: 'errors#unprocessable_entity'
-    match '/500', to: 'errors#internal_server_error'
-  end
-
+  get 'pricing', to: 'static_pages#pricing'
+  get 'contact_us',to: 'static_pages#contact_us'
+  get 'about_us',to: 'static_pages#about_us'
+  get 'services',to: 'static_pages#services'
+  get 'landing',to:'static_pages#landing'
   root 'static_pages#landing'
 end

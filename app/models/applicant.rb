@@ -32,9 +32,9 @@
 
 class Applicant < ApplicationRecord
   extend FriendlyId
-  
+
   friendly_id :first_name, use: :slugged
-  belongs_to  :job_posting, counter_cache: true 
+  belongs_to  :job_posting, counter_cache: true
   has_attached_file :resume
   has_attached_file :cover_letter
 end
