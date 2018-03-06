@@ -22,6 +22,11 @@ class User < ApplicationRecord
 
   friendly_id :full_name, use: :slugged
   belongs_to  :company
+  enum status: %i(active inactive)
+
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+  validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   def self.find_or_create_from_auth_hash(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|

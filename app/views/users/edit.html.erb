@@ -9,8 +9,8 @@
 <div class="container">
   <div class="row">
     <div class="col-8-md col-offset-2">
-      <%= link_to 'Show', @user %> |
-      <%= link_to 'Back', users_path %>
+      <%= link_to 'Show', company_user_path(@company, @user) %> |
+      <%= link_to 'Back', company_job_postings_path(@company) %>
     </div>
   </div>
 </div>
