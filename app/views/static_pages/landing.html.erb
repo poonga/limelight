@@ -1,32 +1,6 @@
 <!-- Navigation -->
 <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">limelight</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign In", authentication_path, class: "nav-link" %>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
+<%= render "nav_bar" %>
 <!-- Header with Background Image -->
 <header class="business-header">
   <div class="container">
@@ -37,47 +11,20 @@
     </div>
   </div>
 </header>
-
 <!-- Page Content -->
-<div class="container">
-
-  <div class="row">
-    <div class="col-sm-8">
-      <h2 class="mt-4">What We Do</h2>
-      <p>Limelight streamlines the hiring process and simplifies the Applicant Tracking System, so that recruiters and hiring managers can focus on what truly matters: their candidates.</p>
-      <p>
-        <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
-      </p>
-    </div>
-    <div class="col-sm-4">
-      <h2 class="mt-4">Contact Us</h2>
-      <address>
-        <strong>Start Bootstrap</strong>
-        <br>3481 Melrose Place
-        <br>Beverly Hills, CA 90210
-        <br>
-      </address>
-      <address>
-        <abbr title="Phone">P:</abbr>
-        (123) 456-7890
-        <br>
-        <abbr title="Email">E:</abbr>
-        <a href="mailto:#">name@example.com</a>
-      </address>
-    </div>
+<div class="container-fluid">
+  <div class="row row_custom">
+    <h1 class="center">A fresh take on the applicant tracking system</h1>
+    <p class="center">Limelight combines ATS and CRM functionality in a single powerful platform to help you source, nurture, and manage your candidates all in one place.</p>
   </div>
   <!-- /.row -->
-
-  <div class="row">
+  <div class="row row_custom">
     <div class="col-sm-4 my-4">
       <div class="card">
         <img class="card-img-top" src="https://www.alternativehumanresource.com/wp-content/uploads/2015/08/hiring-300x200.jpg" alt="">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
+          <h4 class="card-title">Proactively engage the best talent</h4>
+          <p class="card-text">Discover and reach the top candidates that aren't yet looking, all in just a few clicks. With our simple browser extension, your entire team can start sourcing and referring rockstars.</p>
         </div>
       </div>
     </div>
@@ -85,11 +32,8 @@
       <div class="card">
         <img class="card-img-top" src="https://i0.wp.com/www.navigarecruiting.com/wp-content/uploads/2016/01/Dollarphotoclub_90931660-300x200.jpg?resize=300%2C200" alt="">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
+          <h4 class="card-title">Streamline your interview process</h4>
+          <p class="card-text">Drive an end-to-end recruiting process with ease. Lever takes care of the busy work and minimizes manual effort, so you can spend more time giving every candidate a stellar experience.</p>
         </div>
       </div>
     </div>
@@ -97,25 +41,57 @@
       <div class="card">
         <img class="card-img-top" src="https://cdn.sisense.com/wp-content/uploads/23-300x200.png" alt="">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
+          <h4 class="card-title">Make data-driven decisions, fast</h4>
+          <p class="card-text">Always keep track of the numbers that matter. With quick, flexible reports and interactive dashboards, you're never far from the insights you need to power a top-notch recruiting strategy.</p>
         </div>
       </div>
     </div>
-
-  </div>
-  <!-- /.row -->
-
-</div>
-<!-- /.container -->
-
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-  <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    <%= link_to "SEE OUR PRICING",pricing_url,class:"btn_half_size" %>
   </div>
   <!-- /.container -->
-</footer>
+  <div class="row row_custom background_row">
+    <div class="col-md-6">
+      <div class="demo_video">
+        <%= video_tag("scheduling.mp4",width: "100%",height: "auto", poster: "scheduling_poster.png", autoplay: "true",loop:"true") %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="demo_content">
+        <h2>Manage your end-to-end interview process with ease</h2>
+        <ul>
+          <li>Make scheduling and re-scheduling a breeze with a simple drag and drop interface that incorporates calendar availability</li>
+          <li>Impress candidates and collect consistent, actionable interview data with customized feedback forms and skills-based scorecards</li>
+          <li>Craft, approve, and send offers right from Lever, so you can secure your ideal candidates - fast</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row_custom">
+    <div class="col-md-6">
+      <div class="demo_content">
+        <h2>Track the numbers that matter</h2>
+        <ul>
+          <li>Drive more insightful discussions with shared access to interactive, visual dashboards</li>
+          <li>Click on any number to expose underlying candidate data and see the people behind the percentage</li>
+          <li>Build customizable reports with unique URLs so you can always keep tabs on what's critical</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="demo_video">
+        <%= video_tag("reports.mp4",width: "100%",height: "auto", poster: "scheduling_poster.png", autoplay: "true",loop:"true") %>
+      </div>
+    </div>
+  </div>
+  <div class="row row_custom background_row">
+    <h1 class="center">Discover the power of limelight</h1>
+    <p class="center">Learn how we'll help your company hire top talent faster.</p>
+    <br><br><br>
+    <%= link_to "CONTACT US TO GET A DEMO",contact_us_url,class:"btn_half_size" %>
+  </div>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    <!-- /.container -->
+  </footer>

@@ -1,19 +1,16 @@
   <%= bootstrap_form_with(model: user, local: true) do |f| %>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-8-md col-offset-2">
-    <%= f.text_field :first_name %>
-    
-    <%= f.text_field :last_name %>
-
-    <%= f.text_field :email %>
-</div>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-8-md col-offset-2">
+      <%= f.text_field :first_name %>
+      <%= f.text_field :last_name %>
+      <%= f.text_field :email %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 
 <% end %>

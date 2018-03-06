@@ -17,7 +17,7 @@
 
 class Location < ApplicationRecord
   extend FriendlyId
-  
+
   friendly_id :city, use: :slugged
   belongs_to  :company
 end
