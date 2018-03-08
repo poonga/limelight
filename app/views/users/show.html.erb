@@ -16,7 +16,7 @@
                 <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right"></span> Recent Job Postings</h4>
                 <table class="table table-hover table-striped">
                     <tbody>
-                      <% @user.job_postings.each do |posting| %>
+                      <% @user.company.job_postings.each do |posting| %>
                          <tr>
                             <td>
                               <strong><%= posting.title %></strong> <%= posting.type %> <strong> <%= posting.created_at %></strong>
@@ -26,6 +26,12 @@
                     </tbody>
                 </table>
               </div>
+              <div class="col-md-12">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <%= button_to 'Edit', edit_company_user_path(@company, @user), method: :get, class: "btn btn-primary" %>
+                  <%= button_to 'Remove my account', company_user_path(@company, @user), method: :delete, class: "btn btn-danger" %>
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -33,5 +39,4 @@
     <div class="col-lg-4 pull-lg-8 text-xs-center">
       <%= image_tag(@user.icon, size: "150x150", alt: "avatar") %>
     </div>
-  </div>
 </div>
