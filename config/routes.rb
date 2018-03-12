@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'pricing', to: 'static_pages#pricing'
   get 'contact_us',to: 'static_pages#contact_us'
   get 'about_us',to: 'static_pages#about_us'
-  post 'contact_us',to: 'static_pages#contact_us_conformation'
+  post 'contact_us',to: 'static_pages#contact_us_confirmation'
   get 'services',to: 'static_pages#services'
   get 'landing',to:'static_pages#landing'
   root 'static_pages#landing'

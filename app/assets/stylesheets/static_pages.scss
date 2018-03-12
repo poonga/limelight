@@ -35,17 +35,29 @@ body {
   padding:0px;
 }
 .row_custom{
-  padding-top: 20px;
-  padding-bottom: 20px
+  padding:20px;
 }
 p.center{
   width:90%;
   text-align: center;
   margin:auto;
+  padding:10px;
 }
 h1.center{
   width:100%;
   text-align: center;
+  padding:10px;
+}
+hr{
+  width:10%;
+  display: block;
+  margin-left:20px;
+  border-style:solid;
+  border-width: 1px;
+}
+.empty{
+  width:100%;
+  padding-top:5%;
 }
 .btn_half_size{
   width:50%;
