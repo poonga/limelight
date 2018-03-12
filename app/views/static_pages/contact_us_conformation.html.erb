@@ -21,19 +21,21 @@
     <hr>
   </div>
   <div class="row row_custom">
-    <h3>If you want to get a demo, please leave your information bellow. We will contact you as soon as possible.</h3>
+    <h3>Thank you for contacting us. We will respond to your request asap.</h3>
   </div>
   <div class="row row_custom">
-    <%= bootstrap_form_with(model: @static_pages, local: true) do |f| %>
-    <%= f.text_field :first_name %>
-    <%= f.text_field :last_name %>
-    <%= f.email_field :email %>
-    <%= f.text_field :message %>
-    <%= f.submit "Send" %>
-    <% end %>
+    <p>First Name:</p><%= params[:first_name] %>
   </div>
-</div>
-<!-- /.row -->
+  <div class="row row_custom">
+    <p>Last Name:</p><%= params[:last_name] %>
+  </div>
+  <div class="row row_custom">
+    <p>Email:</p><%= params[:email] %>
+  </div>
+  <div class="row row_custom">
+    <p>Your Message:</p><%= params[:message] %>
+  </div>
+  <!-- /.row -->
 </div>
 <!-- /.container -->
 
