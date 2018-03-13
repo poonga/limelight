@@ -1,4 +1,105 @@
-<h1> Welcome, please login to continue </h1>
-<%= button_to login_path, class: "btn btn-sm btn-social btn-google", method: :get do %>
-  <span class="fa fa-google"></span>Log in with Google
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <%= link_to "limelight",landing_url,class:"navbar-brand"%>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <%= link_to "Home",landing_path, class: "nav-link" %>
+                            <span class="sr-only">(current)</span>
+                            </a>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "About Us",about_us_url, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Contact Us",contact_us_url, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Pricing", pricing_url, class:"nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Services", services_url, class:"nav-link" %>
+                    </li>
+                </ul>
+            </div>
+    </div>
+</nav>
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <h2 class="text-center">Welcome, please login to continue</h2>
+                <form class="login-form">
+                    <div class="form-group">
+                        <%= link_to login_path, class: "btn btn-block btn-social btn-primary googleSignUp" do %>
+                            <img src="https://static.slickdealscdn.com/images/loginreg/google.svg">
+                            <span>Continue with Google</span>
+                            <% end %>
+                    </div>
+                    <hr>
+                    <p class="text-center">or</p>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Enter your work email to continue</label>
+                        <input type="text" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input">
+                            <small>Remember Me</small>
+                        </label>
+                            <%= link_to "Next", login_path, class: "btn btn-primary float-right" %>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="https://static.pexels.com/photos/33972/pexels-photo.jpg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Make data-driven decisions</h2>
+                                    <p>Always keep track of the numbers that matter. With quick, flexible reports and interactive dashboards, you're never far from the insights you need to power a top-notch recruiting strategy.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Proactively engage the best talent</h2>
+                                    <p>Discover and reach the top candidates that aren't yet looking, all in just a few clicks. With our simple browser extension, your entire team can start sourcing and referring rockstars.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="https://images.pexels.com/photos/567633/pexels-photo-567633.jpeg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Streamline your interview process</h2>
+                                    <p>Drive an end-to-end recruiting process with ease. Limelight takes care of the busy work and minimizes manual effort, so you can spend more time giving every candidate a stellar experience.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Limelight</p>
+  </div>
+  <!-- /.container -->
+</footer>
