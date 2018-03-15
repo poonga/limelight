@@ -1,4 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="background-color: WhiteSmoke; border-radius: 15px; border:3px solid LightGray
+    padding: 20px; ">
+      <div class="row">
+      <div class="col-md-12  ">
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-23 col-lg-12" >
+          <div class="panel panel-info">
+            
+            <div class="panel-heading">
+              <h1 class="panel-title"><font size="+9"> <%= @job_posting.title %></font> </h1>
+              <h5><b> Company: </b><%= @job_posting.company.name%></h5>
+              <a href="#" class="btn btn-primary">APPLY FOR THIS JOB</a>
+            </div>
 
-<%= link_to 'Edit', edit_company_job_posting_path(@company, @job_posting) %> |
-<%= link_to 'Back', company_job_postings_path(@company) %>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12 col-lg-12 " align="center"> </div>
+                <div class=" col-md-12 col-lg-12 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td><b>Job Type:</b></td>
+                        <td><%= @job_posting.type %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Description:</b></td>
+                        <td> <p><%= @job_posting.description%></p></td>
+                      </tr>
+                      <tr>
+                        <td><b>Years of Experience:</b></td>
+                        <td><%= @job_posting.years_of_experience %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Salary: </b></td>
+                        <td><%= @job_posting.min_salary %></td>
+                      </tr>
+                        <tr>
+                        <td><b>Date Posted: </b></td>
+                        <td><%= @job_posting.created_at %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <a href="#" class="btn btn-primary">APPLY FOR THIS JOB</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
