@@ -1,0 +1,25 @@
+
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <%= link_to "limelight",landing_url,class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <%= link_to "Dashboard", company_job_postings_path(@company), class: "nav-link" %>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'My Profile', company_user_path(@company, current_user), class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign Out', logout_path, class:"nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
