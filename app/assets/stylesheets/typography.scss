@@ -1,0 +1,34 @@
+/* This file only contains customization to the typography styles of boostrap.css */
+
+@font-face {
+    font-family: 'meta';
+    src: font-url("meta-normal.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sofia';
+    src: font-url("Sofia-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: 'meta', sans-serif;
+    line-height: 1.7;
+    background-color: #f9f9f9;
+    color: rgba(44, 46, 47, 0.8);
+}
+
+label, h1 {
+    font-weight: bold;
+}
+
+.navbar-brand {
+    font-family: 'Sofia', cursive;
+}
