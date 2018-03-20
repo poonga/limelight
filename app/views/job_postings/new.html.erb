@@ -1,7 +1,8 @@
-<h1>New Job Posting</h1>
-
-<div class='container'>
-<%= render 'form', job_posting: @job_posting %>
+<div class="card">
+	<div class = "center">
+		<h5 class="card-header">New Job Posting</h5>
+		<div class="card-body">
+			<%= render 'form', job_posting: @job_posting %>
+		</div>
+	</div>
 </div>
-
-<%= link_to 'Back', company_job_postings_path %>

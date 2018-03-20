@@ -2,7 +2,6 @@
 <% if job_posting.errors.any? %>
 <div id="error_explanation">
     <h2><%= pluralize(job_posting.errors.count, "error") %> prohibited this job_posting from being saved:</h2>
-
     <ul>
         <% job_posting.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,20 +9,40 @@
     </ul>
 </div>
 <% end %>
-
-<div class='row'>
-  <div class='col-sm-6 col-offset-3'>
-    <%= form.text_field :title, label: "Title" %>
-    <%= form.text_field :team_name, label: "Team" %>
-    <%= form.text_field :description, label: "Description" %>
-    <%= form.number_field :min_salary,
-    value: number_to_currency(form.object.min_salary.to_f, delimiter: '', unit: ''),
-    step: 0.01, label: "Salary" %>
-    <%= form.number_field :years_of_experience, label: "Years of Experience" %>
-  </div>
-</div>
-
-<div class="actions">
-    <%= form.submit %>
-</div>
+<form>
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <%= form.text_field :title, label: "Title", placeholder: "Enter Title here..." %>
+            </div>
+            <div class="col-sm-6 form-group">
+                <%= form.text_field :type, label: "Type", placeholder: "Enter Type here..." %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= form.text_area :description, placeholder: "Enter Description here...", rows: 10 %>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <%= form.number_field :years_of_experience, label: "Years of Experience"%>
+            </div>
+            <div class="col-sm-6 form-group">
+                <%= form.number_field :min_salary, value: number_to_currency(form.object.min_salary.to_f, delimiter: '', unit: ''),step: 0.01, label: "Salary" %>
+            </div>
+            <div class="col-sm-4 form-group">
+                <%= form.text_field :team_name, label: "Team Name", placeholder:"Enter Team name here..." %>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-sm-12">
+                <div class="form-actions">
+                    <div class="actions" >
+                        <%= form.submit %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-md btn-secondary" style = "float:right"><%= link_to 'Back', company_job_postings_path %></button>
+    </div>
+</form>
 <% end %>
