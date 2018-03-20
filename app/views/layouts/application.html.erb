@@ -5,8 +5,14 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
   </head>
+
+  <!-- Renders a different nav bar for users and guests -->
+  <% if user_signed_in? %>
+    <%= render '/layouts/nav_user' %>
+  <% else %>
+    <%= render '/layouts/nav_guest' %>
+  <% end %>
 
   <body>
     <!-- this will be required by devise gem later
