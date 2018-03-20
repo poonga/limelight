@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
 
   def landing
     if user_signed_in?
-      redirect_to company_job_postings_path(current_user[:company_id])
+      redirect_to company_job_postings_path(current_user.company_id)
     end
   end
 
