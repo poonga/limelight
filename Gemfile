@@ -40,6 +40,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
+  gem 'faker', '~> 1.8.7'
   gem 'awesome_print'       # Nicely format fields of objects
   gem 'pry-nav'             # Debugger with 'next', 'continue' options
   gem 'dotenv-rails'

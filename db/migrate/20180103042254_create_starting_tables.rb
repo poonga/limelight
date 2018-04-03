@@ -33,7 +33,7 @@ class CreateStartingTables < ActiveRecord::Migration[5.1]
 
     create_table :job_postings, id: :uuid do |t|
       t.string      :title, null: false
-      t.string      :type
+      t.integer     :employment_type, default: 0
       t.string      :description
       t.decimal     :min_salary
       t.integer     :years_of_experience
