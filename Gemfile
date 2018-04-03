@@ -68,3 +68,5 @@ group :production do # Heroku requirements
   gem 'newrelic_rpm'        # App performance monitoring
   gem 'rails_12factor'      # Avoid Heroku deprecation warning
 end
+
+gem 'summernote-rails'

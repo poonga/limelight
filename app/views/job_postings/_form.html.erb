@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="form-group">
-            <%= form.text_area :description, placeholder: "Enter Description here...", rows: 10 %>
+            <%= form.text_area :description, placeholder: "Enter Description here...", id: 'job-posting-desc' %>
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">
@@ -40,9 +40,9 @@
                         <%= form.submit %>
                     </div>
                 </div>
+                <button type="button" class="btn btn-md btn-secondary" style = "float:right;"><%= link_to 'Back', company_job_postings_path, style: "color: white;" %></button>
             </div>
         </div>
-        <button type="button" class="btn btn-md btn-secondary" style = "float:right"><%= link_to 'Back', company_job_postings_path %></button>
     </div>
 </form>
 <% end %>
