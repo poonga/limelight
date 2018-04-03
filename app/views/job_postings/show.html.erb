@@ -5,7 +5,7 @@
       </div>
         <div class="col-xs-12 col-sm-12 col-md-23 col-lg-12" >
           <div class="panel panel-info">
-            
+
             <div class="panel-heading">
               <h1 class="panel-title"><font size="+9"> <%= @job_posting.title %></font> </h1>
               <h5><b> Company: </b><%= @job_posting.company.name%></h5>
@@ -15,7 +15,7 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-12 col-lg-12 " align="center"> </div>
-                <div class=" col-md-12 col-lg-12 "> 
+                <div class=" col-md-12 col-lg-12 ">
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -40,7 +40,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <a href="#" class="btn btn-primary">APPLY FOR THIS JOB</a>
+                  <%= link_to 'Apply', new_job_posting_applicant_path(@job_posting) %>
                 </div>
               </div>
             </div>
