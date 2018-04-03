@@ -28,14 +28,10 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.new(applicant_params)
 
-    respond_to do |format|
-      if @applicant.save
-        format.html { redirect_to job_posting_applicant_path(@job_posting, @applicant), notice: 'Applicant was successfully created.' }
-        format.json { render :show, status: :created, location: @applicant }
-      else
-        format.html { render :new }
-        format.json { render json: @applicant.errors, status: :unprocessable_entity }
-      end
+    if @applicant.save
+      redirect_to job_posting_applicant_path(@job_posting, @applicant), notice: 'Applicant was successfully created.'
+    else
+      render :new
     end
   end
 
