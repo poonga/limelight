@@ -1,6 +1,10 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-$(document).on('turbolinks:load', function() {
-  $('#job-posting-desc').summernote();
+$(document).ready(function() {
+  $('[data-provider="summernote"]').each(function() {
+    $(this).summernote({
+      height: 300
+    });
+  });
 });
