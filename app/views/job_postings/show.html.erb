@@ -3,21 +3,16 @@
       <div class="row">
       <div class="col-md-12">
       </div>
-<!--         <div class="col-xs-12 col-sm-12 col-md-23 col-lg-12" >
- -->          <div class="panel panel-info">
-            
+          <div class="panel panel-info">        
             <div class="panel-heading">
               <h1 class="panel-title"><font size="+9"> <%= @job_posting.title %></font> </h1>
               <h5><b> Company: </b><%= @job_posting.company.name%></h5>
               <a href="#" class="btn btn-primary">APPLY FOR THIS JOB</a>
             </div>
-
             <div class="panel-body">
               <div class="row">
                 <div class=" col-md-12 col-lg-12 "> 
                   <table class="table table-user-information">
-                    <thead> 
-
                     <tbody>
                       <tr>
                         <td><b>Job Type:</b></td>
@@ -40,9 +35,8 @@
                         <td><%= @job_posting.created_at %></td>
                       </tr>
                     </tbody>
-
                   </table>
-                  <a href="#" class="btn btn-primary">APPLY FOR THIS JOB</a>
+                  <%= link_to 'Apply', new_job_posting_applicant_path(@job_posting) %>
                 </div>
               </div>
             </div>
