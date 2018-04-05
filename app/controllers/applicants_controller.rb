@@ -1,5 +1,7 @@
 class ApplicantsController < ApplicationController
+  skip_before_action :ensure_signed_in, only: [:new, :show, :create]
   before_action :set_applicant, only: [:show, :edit, :update, :destroy]
+  before_action :set_job_posting
 
   # GET /applicants
   # GET /applicants.json
@@ -26,14 +28,10 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.new(applicant_params)
 
-    respond_to do |format|
-      if @applicant.save
-        format.html { redirect_to @applicant, notice: 'Applicant was successfully created.' }
-        format.json { render :show, status: :created, location: @applicant }
-      else
-        format.html { render :new }
-        format.json { render json: @applicant.errors, status: :unprocessable_entity }
-      end
+    if @applicant.save
+      redirect_to job_posting_applicant_path(@job_posting, @applicant), notice: 'Applicant was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -62,13 +60,26 @@ class ApplicantsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_applicant
-      @applicant = Applicant.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def applicant_params
-      params.fetch(:applicant, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def strong_params
+    params.require(:applicant).permit(
+      :first_name,
+      :last_name
+    )
+  end
+
+  def applicant_params
+    strong_params.merge( job_posting_id: @job_posting.id.to_s )
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_applicant
+    @applicant = Applicant.friendly.find(params[:id])
+  end
+
+  def set_job_posting
+    @job_posting = JobPosting.find(params[:job_posting_id])
+  end
+
 end
