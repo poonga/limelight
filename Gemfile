@@ -34,10 +34,9 @@ gem 'paperclip', '~> 5.2.0'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'summernote-rails'
 
 group :development, :test do
   gem 'faker', '~> 1.8.7'
@@ -69,5 +68,3 @@ group :production do # Heroku requirements
   gem 'newrelic_rpm'        # App performance monitoring
   gem 'rails_12factor'      # Avoid Heroku deprecation warning
 end
-
-gem 'summernote-rails'

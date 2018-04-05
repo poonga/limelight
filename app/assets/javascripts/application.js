@@ -14,7 +14,6 @@
 //= require popper
 //= require bootstrap
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require summernote
 //= require job_postings
