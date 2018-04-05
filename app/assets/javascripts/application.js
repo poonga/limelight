@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require popper
 //= require bootstrap
-//= require jquery_ujs
+//= require summernote/summernote-bs4.min
+//= require summernote_init
 //= require_tree .
-//= require summernote
-//= require job_postings

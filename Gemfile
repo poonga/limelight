@@ -36,7 +36,9 @@ gem 'omniauth-google-oauth2'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-gem 'summernote-rails'
+
+# Web page editor
+gem 'summernote-rails', '~> 0.8.10.0'
 
 group :development, :test do
   gem 'faker', '~> 1.8.7'

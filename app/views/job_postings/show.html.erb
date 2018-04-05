@@ -3,7 +3,7 @@
       <div class="row">
       <div class="col-md-12">
       </div>
-          <div class="panel panel-info">        
+          <div class="panel panel-info">
             <div class="panel-heading">
               <h1 class="panel-title"><font size="+9"> <%= @job_posting.title %></font> </h1>
               <h5><b> Company: </b><%= @job_posting.company.name%></h5>
@@ -11,12 +11,12 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class=" col-md-12 col-lg-12 "> 
+                <div class=" col-md-12 col-lg-12 ">
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
                         <td><b>Job Type:</b></td>
-                        <td><%= @job_posting.type %></td>
+                        <td><%= @job_posting.employment_type %></td>
                       </tr>
                       <tr>
                         <td><b>Description:</b></td>

@@ -16,11 +16,11 @@
                 <%= form.text_field :title, label: "Title", placeholder: "Enter Title here..." %>
             </div>
             <div class="col-sm-6 form-group">
-                <%= form.text_field :type, label: "Type", placeholder: "Enter Type here..." %>
+                <%= form.select :employment_type, JobPosting.employment_types, label: "Employment Type", placeholder: "Select employment type here..." %>
             </div>
         </div>
         <div class="form-group">
-            <%= form.text_area :description, placeholder: "Enter Description here...", id: 'job-posting-desc' %>
+            <%= form.text_area :description, placeholder: "Enter Description here...", 'data-provider': :summernote %>
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">

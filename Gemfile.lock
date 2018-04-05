@@ -344,7 +344,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  summernote-rails
+  summernote-rails (~> 0.8.10.0)
   uglifier (>= 1.3.0)
 
 BUNDLED WITH
