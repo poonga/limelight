@@ -65,7 +65,9 @@ class ApplicantsController < ApplicationController
   def strong_params
     params.require(:applicant).permit(
       :first_name,
-      :last_name
+      :last_name,
+      :email,
+      :resume
     )
   end
 

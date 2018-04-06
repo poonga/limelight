@@ -37,4 +37,9 @@ class Applicant < ApplicationRecord
   belongs_to  :job_posting, counter_cache: true
   has_attached_file :resume
   has_attached_file :cover_letter
+
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+  validates_presence_of :email
+  validates_attachment :resume, presence: true, content_type: { content_type:"application/pdf" }
 end

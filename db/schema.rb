@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306220527) do
+ActiveRecord::Schema.define(version: 20180405191956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180306220527) do
   create_table "applicants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "email"
+    t.string "email", null: false
     t.string "phone_number"
     t.boolean "work_authorized"
     t.string "authorization_status"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20180306220527) do
     t.string "ethnicity"
     t.string "veteran_status"
     t.string "disability_status"
-    t.string "resume_file_name"
-    t.string "resume_content_type"
-    t.integer "resume_file_size"
-    t.datetime "resume_updated_at"
+    t.string "resume_file_name", null: false
+    t.string "resume_content_type", null: false
+    t.integer "resume_file_size", null: false
+    t.datetime "resume_updated_at", null: false
     t.string "cover_letter_file_name"
     t.string "cover_letter_content_type"
     t.integer "cover_letter_file_size"
