@@ -9,7 +9,7 @@ end
 500.times do
   JobPosting.create(
     title: Faker::Job.title,
-    employment_type: JobPosting.employment_type.keys.sample,
+    employment_type: JobPosting.employment_types.keys.sample,
     description: Faker::Lorem.paragraph,
     min_salary: Faker::Number.decimal(5, 2),
     years_of_experience: Faker::Number.between(0, 20),
