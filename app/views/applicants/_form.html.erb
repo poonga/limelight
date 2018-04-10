@@ -11,7 +11,10 @@
   <% end %>
 
   <div class="col-sm-12">
-    <div class="row">
+    <div class="form-group">
+      <div class="col-sm-6 form-group">
+        <%= form.file_field :resume, label: "Resume" %>
+      </div>
       <div class="col-sm-6 form-group">
         <%= form.text_field :first_name, label: "First Name" %>
       </div>
@@ -30,15 +33,12 @@
       <div class="col-sm-6 form-group">
         <%= form.text_field :website_url, label: "Portfolio URL" %>
       </div>
-      <div class="col-sm-6 form-group">
-        <%= form.file_field :resume, label: "Portfolio URL" %>
-      </div>
     </div>
-    <div class = "row">
+    <div class = "form-group">
       <div class = "col-sm-12">
         <div class="form-actions">
           <div class="actions" >
-            <%= form.submit %>
+            <%= form.submit "Apply" %>
           </div>
         </div>
       </div>
