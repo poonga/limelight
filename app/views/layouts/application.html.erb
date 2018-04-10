@@ -3,22 +3,28 @@
   <head>
     <title>Limelight</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <!-- Renders a different nav bar for users and guests -->
-  <% if user_signed_in? %>
-    <%= render '/layouts/nav_user' %>
-  <% else %>
-    <%= render '/layouts/nav_guest' %>
-  <% end %>
+    <!-- load application.scss and apply to all content -->
+    <%= stylesheet_link_tag    'application', media: 'all' %>
 
-  <body>
-    <!-- this will be required by devise gem later
-    <p class="notice"><%#= notice %></p>
-    <p class="alert"><%#= alert %></p>
+    <!-- load external css through cdn -->
+    <!-- create a new tag for each -->
+    <!--
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     -->
-    <%= yield %>
-  </body>
+
+    <!-- load application.js and external js through cdn -->
+    <!-- append as needed -->
+    <%= javascript_include_tag 'application', 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.min.js' %>
+
+  </head>
+  <% if user_signed_in? %>
+    <body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
+      <%= render '/layouts/nav_user' %>
+    </body>
+  <% else %>
+    <body>
+      <%= render '/layouts/nav_guest' %>
+    </body>
+  <% end %>
 </html>
