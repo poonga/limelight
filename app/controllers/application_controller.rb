@@ -10,12 +10,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find current_user_id
+    @current_user ||= User.find_by_id current_user_id
   end
   helper_method :current_user
 
   def user_signed_in?
-    current_user_id.present?
+    current_user_id.present? && current_user.present?
   end
   helper_method :user_signed_in?
 
