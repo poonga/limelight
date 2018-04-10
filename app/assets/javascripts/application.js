@@ -16,4 +16,6 @@
 //= require bootstrap
 //= require summernote/summernote-bs4.min
 //= require summernote_init
+//= require nav
+//= require datatables
 //= require_tree .
