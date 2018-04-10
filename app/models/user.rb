@@ -32,9 +32,15 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      user.email = auth.info.email
+      if (user.first_name == nil)
+        user.first_name = auth.info.first_name
+      end
+      if (user.last_name == nil)
+        user.last_name = auth.info.last_name
+      end
+      if (user.email == nil)
+        user.email = auth.info.email
+      end
       user.icon = auth.info.image
       company_name = auth.extra.raw_info.hd ? auth.extra.raw_info.hd.split('.')[0] : 'Independent Agency'
       user.company = Company.find_or_create_by(name: company_name)
