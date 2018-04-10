@@ -2,7 +2,14 @@
 @import "font-awesome";
 @import "bootstrap-social";
 @import "rails_bootstrap_forms";
-@import "typography";
-@import "static_pages";
 @import "summernote-bs4";
 @import "summernote-custom-theme.min";
+@import "variables";
+@import "mixins";
+@import "globals";
+@import "utilities";
+@import "typography";
+@import "nav";
+@import "cards";
+@import "static_pages";
+@import "footer";
