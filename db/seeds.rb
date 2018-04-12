@@ -6,7 +6,7 @@ teams = 10.times.map do
   Team.create(company_id: company.id, name: Faker::Job.field)
 end
 
-500.times do
+500.times.each do |t|
   JobPosting.create(
     title: Faker::Job.title,
     employment_type: JobPosting.employment_types.keys.sample,
@@ -15,7 +15,8 @@ end
     years_of_experience: Faker::Number.between(0, 20),
     applicants_count: 0,
     team_id: teams.sample.id,
-    company_id: company.id
+    company_id: company.id,
+    created_at: Faker::Number.between(0, 90).days.ago
   )
 end
 

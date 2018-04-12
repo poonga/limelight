@@ -15,6 +15,7 @@ class Team < ApplicationRecord
 
   friendly_id :name, use: :slugged
   belongs_to  :company
+  has_many    :job_postings
 
   validates   :name, presence: true, uniqueness: true
 end
