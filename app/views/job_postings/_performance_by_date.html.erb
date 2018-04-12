@@ -1,0 +1,8 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i>Performance by Date</div>
+    <div class="card-body">
+        <%= line_chart @job_postings.group_by_day(:created_at).count, adapter: "chartjs" %>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>

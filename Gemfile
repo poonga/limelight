@@ -40,6 +40,10 @@ gem 'jbuilder', '~> 2.5'
 # Web page editor
 gem 'summernote-rails', '~> 0.8.10.0'
 
+# JS charting library
+gem "chartkick"
+gem "groupdate"
+
 group :development, :test do
   gem 'faker', '~> 1.8.7'
   gem 'awesome_print'       # Nicely format fields of objects
