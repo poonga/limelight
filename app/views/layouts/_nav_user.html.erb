@@ -24,10 +24,10 @@
                 <% end %>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="charts.html">
+              <%= link_to company_stats_path(@company), class: 'nav-link' do %>
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">Recruiting Performance</span>
-                </a>
+              <% end %>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                 <a class="nav-link" href="tables.html">
