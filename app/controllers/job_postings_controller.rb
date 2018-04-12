@@ -8,6 +8,15 @@ class JobPostingsController < ApplicationController
   end
 
   def show
+    if user_signed_in?
+      @applicants = @job_posting.applicants
+      render template: "job_postings/show"
+    else
+      render template: "job_postings/apply"
+    end
+  end
+
+  def apply
   end
 
   def new

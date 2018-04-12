@@ -1,0 +1,40 @@
+<!-- Job Posting -->
+<div class="card mb-3">
+    <div class="card-header">
+        <h1><%= @job_posting.company.name.titleize %>: <%= @job_posting.title %></h1>
+    </div>
+    <div class="card-body">
+        <table class="table-responsive">
+            <tbody>
+              <tr>
+                <td><b>Job Type:</b></td>
+                <td><%= @job_posting.employment_type %></td>
+              </tr>
+              <tr>
+                <td><b>Team:</b></td>
+                <td><%= @job_posting.team.name %></td>
+              </tr>
+              <tr>
+                <td><b>Description:</b></td>
+                <td><p><%= raw(@job_posting.description) %></p></td>
+              </tr>
+              <tr>
+                <td><b>Years of Experience:</b></td>
+                <td><%= @job_posting.years_of_experience %></td>
+              </tr>
+              <tr>
+                <td><b>Salary:</b></td>
+                <td><%= @job_posting.min_salary %></td>
+              </tr>
+              <tr>
+                <td><b>Date Posted: </b></td>
+                <td><%= @job_posting.created_at %></td>
+              </tr>
+              <tr>
+                <td><%= button_to 'Apply', new_job_posting_applicant_path(@job_posting), method: :get, class: 'btn btn-primary btn-md btn-block' %></td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer small text-muted">Updated <%= @job_posting.updated_at %></div>
+</div>
