@@ -1,4 +1,4 @@
-<%= render 'menu' %>
+<%= render partial: 'layouts/menu', locals: { parent: "#{@company.name.titleize}", child: "Dashboard" } %>
 <%= render 'icon_cards' %>
 <%= render 'performance_by_date' %>
 <%= render 'performance_by_teams' %>
