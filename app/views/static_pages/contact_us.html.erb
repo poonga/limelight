@@ -1,29 +1,97 @@
-<!-- Header with Background Image -->
-<%= render "header" %>
-<!-- Page Content -->
-<div class="container">
-  <div class="row row_custom">
-    <h1>Contact Us</h1>
-  </div>
-  <div class="row">
-    <hr>
-  </div>
-  <div class="row row_custom">
-    <h3>If you want to get a demo, please leave your information bellow. We will contact you as soon as possible.</h3>
-  </div>
-  <div class="row row_custom">
-    <%= bootstrap_form_with(model: @static_pages, local: true) do |f| %>
-    <%= f.text_field :first_name %>
-    <%= f.text_field :last_name %>
-    <%= f.email_field :email %>
-    <%= f.text_field :message %>
-    <%= f.submit "Send" %>
-    <% end %>
-  </div>
-</div>
-<!-- /.row -->
-</div>
-<!-- /.container -->
+<!-- Contact -->
+<section class="container">
+    <div class="row">
 
-<!-- Footer -->
+        <!--Grid column-->
+        <div class="col-lg-5 mb-4">
+
+            <!--Form with header-->
+            <div class="card border-primary rounded-0">
+
+                <div class="card-header p-0">
+                    <div class="bg-primary text-white text-center py-2">
+                        <h3><i class="fa fa-envelope"></i> Write to us:</h3>
+                        <p class="m-0">We'll write rarely, but only the best content.</p>
+                    </div>
+                </div>
+                <div class="card-body p-3">
+
+                    <!--Body-->
+                    <div class="form-group">
+                        <label>Your name</label>
+                        <div class="input-group">
+                            <div class="input-group-addon bg-light"><i class="fa fa-user text-primary"></i></div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Your email</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon bg-light"><i class="fa fa-envelope text-primary"></i></div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Service</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon bg-light"><i class="fa fa-tag prefix text-primary"></i></div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon bg-light"><i class="fa fa-pencil text-primary"></i></div>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-block rounded-0 py-2">Submit</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--Form with header-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-7">
+
+            <!--Google map-->
+            <div class="mb-4">
+            </div>
+
+            <!--Buttons-->
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-map-marker"></i></a>
+                    <p>San Francisco, CA 94126,<br> United States</p>
+                </div>
+
+                <div class="col-md-4">
+                    <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-phone"></i></a>
+                    <p>+ 01 234 567 89, <br> Mon - Fri, 8:00-22:00</p>
+                </div>
+
+                <div class="col-md-4">
+                    <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-envelope"></i></a>
+                    <p>info@gmail.com <br> sale@gmail.com</p>
+                </div>
+            </div>
+
+        </div>
+       <!--Grid column-->
+
+    </div>
+
+</section>
+<!-- Contact -->
 <%= render "footer" %>
+
+<style>
+  section { padding-top: 30px; }
+</style>
