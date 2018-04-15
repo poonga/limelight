@@ -2,7 +2,9 @@ $(document).ready(function() {
   "use strict"; // Start of use strict
 
   // Configure tooltips globally
-  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="tooltip"]').tooltip({
+    trigger: 'hover'
+  });
 
   // Configure tooltips for collapsed side navigation
   $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({

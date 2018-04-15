@@ -1,71 +1,69 @@
+<%= render partial: 'layouts/menu', locals: { parent: "#{@company.name.titleize}", child: @job_posting.title } %>
 <div class="card mb-3">
-    <div class="center">
-        <h1 class="card-header"><%=  @job_posting.company.name.titleize %>: <%= @job_posting.title %></h1>
-        <div class="card-body" style="background-color: whitesmoke ;margin:100px; margin-top: 50px; border-radius: 20px">
-            <%= bootstrap_form_with(model: @job_posting, url: company_job_posting_path(@company, @job_posting), local: true) do |f| %>
-                <% if @job_posting.errors.any? %>
-                    <div id="error_explanation">
-                        <h2><%= pluralize(@job_posting.errors.count, "error") %> prohibited this job_posting from being saved:</h2>
-                        <ul>
-                            <% @job_posting.errors.full_messages.each do |message| %>
-                            <li><%= message %></li>
-                            <% end %>
-                        </ul>
+    <div class="card-body">
+        <%= bootstrap_form_with(model: @job_posting, url: company_job_posting_path(@company, @job_posting), local: true) do |f| %>
+            <% if @job_posting.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(@job_posting.errors.count, "error") %> prohibited this job_posting from being saved:</h2>
+                    <ul>
+                        <% @job_posting.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <%= f.text_field :title, label: "Title", placeholder: "Enter title here..." %>
                     </div>
-                <% end %>
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <%= f.text_field :title, label: "Title", placeholder: "Enter title here..." %>
-                        </div>
-                        <div class="col-sm-6 form-group">
-                            <%= f.select :employment_type, JobPosting.employment_types.map{ |type, _| [type.humanize, type] }, label: "Employment Type" %>
-                        </div>
+                    <div class="col-sm-6 form-group">
+                        <%= f.select :employment_type, JobPosting.employment_types.map{ |type, _| [type.humanize, type] }, label: "Employment Type" %>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <%= f.number_field :years_of_experience, label: "Years of Experience", placeholder: "Enter 1, 5, 10, etc..." %>
-                        </div>
-                        <div class="col-sm-6 form-group">
-                            <%= f.number_field :min_salary, value: number_to_currency(f.object.min_salary.to_f, delimiter: '', unit: ''), step: 0.01, label: "Salary" %>
-                        </div>
-                        <div class="col-sm-6 form-group">
-                            <%= f.select :team_id, @company.teams.map { |t| [t.name, t.id] }, label: "Team" %>
-                        </div>
-                        <div class="col-sm-6 form-group">
-                            <label>Work Authorization</label>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                    Must be able to work in the US
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                                    Sponsorship Available
-                                </label>
-                            </div>
-                            <div class="form-check disabled">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
-                                    N/A
-                                </label>
-                            </div>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <%= f.number_field :years_of_experience, label: "Years of Experience", placeholder: "Enter 1, 5, 10, etc..." %>
                     </div>
-                    <div class="form-group">
-                        <%= f.text_area :description, placeholder: "Enter Description here...", 'data-provider': :summernote %>
+                    <div class="col-sm-6 form-group">
+                        <%= f.number_field :min_salary, value: number_to_currency(f.object.min_salary.to_f, delimiter: '', unit: ''), step: 0.01, label: "Salary" %>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <%= f.submit "Save", class: "btn btn-md btn-primary float-left" %>
-                            <%= button_to "Cancel", root_path, class: "btn btn-md btn-secondary float-right" %>
+                    <div class="col-sm-6 form-group">
+                        <%= f.select :team_id, @company.teams.map { |t| [t.name, t.id] }, label: "Team" %>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Work Authorization</label>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Must be able to work in the US
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                                Sponsorship Available
+                            </label>
+                        </div>
+                        <div class="form-check disabled">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                                N/A
+                            </label>
                         </div>
                     </div>
                 </div>
-            <% end %>
-        </div>
+                <div class="form-group">
+                    <%= f.text_area :description, placeholder: "Enter Description here...", 'data-provider': :summernote %>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <%= f.submit "Create", class: "btn btn-md btn-primary float-left" %>
+                        <%= button_to "Cancel", root_path, class: "btn btn-md btn-secondary float-right" %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
     </div>
 </div>
 
