@@ -5,10 +5,10 @@
         <i class="fa fa-user-o"></i> User Profile</div>
     <div class="card-body">
         <div class="row">
-            <div class="col-md-1">
-              <%= image_tag(@user.icon, size: "125x125", alt: "avatar") %>
+            <div class="col-md-2">
+              <%= image_tag(@user.icon, size: "150x150", alt: "avatar") %>
             </div>
-            <div class="col-md-11">
+            <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-6">
                       <h6>Name: <%= @user.full_name %></h6>

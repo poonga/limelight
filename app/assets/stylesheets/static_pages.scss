@@ -12,6 +12,14 @@ body {
     }
 }
 
+.content-wrapper {
+    background: #DE6262;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #29323c,  #485563);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #29323c,  #485563);
+}
+
 .business-header {
     text-shadow: 0 1px 0 black;
     height: 50vh;
