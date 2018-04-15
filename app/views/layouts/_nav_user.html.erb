@@ -11,43 +11,43 @@
                   <span class="nav-link-text">Dashboard</span>
               <% end %>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="New Job Listing">
                 <%= link_to new_company_job_posting_path, class: 'nav-link' do %>
                     <i class="fa fa-fw fa-user-plus"></i>
                     <span class="nav-link-text">New Job Listing</span>
                 <% end %>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Recruiting Performance">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">Recruiting Performance</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Communication">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-comments-o"></i>
                     <span class="nav-link-text">Communication</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Applicants">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-sitemap"></i>
                     <span class="nav-link-text">Applicants</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="<%= @company.name.titleize %> Resources">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-link"></i>
                     <span class="nav-link-text"><%= @company.name.titleize %> Resources</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employee Profile">
                 <%= link_to company_user_path(@company, current_user), class: 'nav-link' do %>
                     <i class="fa fa-fw fa-user-o"></i>
                     <span class="nav-link-text">Employee Profile</span>
                 <% end %>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
                   <i class="fa fa-fw fa-wrench"></i>
                   <span class="nav-link-text">Settings</span>
