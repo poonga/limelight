@@ -15,9 +15,9 @@
               <td><%= job_posting.team.name%></td>
               <td><%= number_to_currency(job_posting.min_salary.to_f, delimiter: '', unit: '') %></td>
               <td>
-                  <%= link_to 'Show', company_job_posting_path(@company, job_posting) %>
+                  <%= link_to 'View', company_job_posting_path(@company, job_posting) %>
                   <%= link_to 'Edit', edit_company_job_posting_path(@company, job_posting) %>
-                  <%= link_to 'Destroy', company_job_posting_path(@company, job_posting), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Remove', company_job_posting_path(@company, job_posting), method: :delete, data: { confirm: 'Are you sure?' } %>
               </td>
           </tr>
           <% end %>

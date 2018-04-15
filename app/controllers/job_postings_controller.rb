@@ -27,7 +27,7 @@ class JobPostingsController < ApplicationController
   end
 
   def create
-    @job_posting = JobPosting.new(filtered_params)
+    @job_posting = JobPosting.new(job_posting_params)
     if @job_posting.save
       redirect_to company_job_posting_path(@company, @job_posting), notice: 'Job posting was successfully created.'
     else
@@ -36,7 +36,7 @@ class JobPostingsController < ApplicationController
   end
 
   def update
-    if @job_posting.update(filtered_params)
+    if @job_posting.update(job_posting_params)
       redirect_to company_job_posting_path(@company, @job_posting), notice: 'Job posting was successfully updated.'
     else
       render :edit
@@ -58,17 +58,12 @@ class JobPostingsController < ApplicationController
   def job_posting_params
     params.require(:job_posting).permit(
       :title,
-      :team_name,
+      :team_id,
       :description,
       :min_salary,
-      :years_of_experience
-    )
-  end
-
-  def filtered_params
-    params = job_posting_params
-    team = Team.find_or_create_by(name: params.delete(:team_name), company_id: @company.id)
-    params.merge(team_id: team.id, company_id: @company.id.to_s)
+      :years_of_experience,
+      :employment_type
+    ).merge(company_id: @company.id)
   end
 
   def set_company
