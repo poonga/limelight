@@ -1,42 +1,43 @@
-<div class="container">
-  <div class="row m-y-2">
-    <div class="col-lg-8 push-lg-4">
-      <div class="tab-content p-b-3">
-        <div id="profile">
-            <h4 class="m-y-2">User Profile</h4>
-            <div class="row">
-              <div class="col-md-6">
-                <h6>Name: <%= @user.full_name %></h6>
-                <h6>Company: <%= @user.company.name %></h6>
-                <h6>Email: <%= @user.email %></h6>
-              </div>
-              <div class="col-md-6">
-              </div>
-              <div class="col-md-12">
-                <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right"></span> Recent Job Postings</h4>
-                <table class="table table-hover table-striped">
-                    <tbody>
-                      <% @user.company.job_postings.each do |posting| %>
-                         <tr>
-                            <td>
-                              <strong><%= posting.title %></strong> <%= posting.employment_type %> <strong> <%= posting.created_at %></strong>
-                            </td>
-                        </tr>
-                      <% end %>
-                    </tbody>
-                </table>
-              </div>
-              <div class="col-md-12">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                  <%= button_to 'Edit', edit_company_user_path(@company, @user), method: :get, class: "btn btn-primary" %>
-                  <%= button_to 'Remove my account', company_user_path(@company, @user), method: :delete, class: "btn btn-danger" %>
+<%= render partial: 'layouts/menu', locals: { parent: "#{@company.name.titleize}", child: @user.full_name } %>
+<!-- DataTables Card-->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-user-o"></i> User Profile</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-1">
+              <%= image_tag(@user.icon, size: "125x125", alt: "avatar") %>
+            </div>
+            <div class="col-md-11">
+                <div class="row">
+                    <div class="col-md-6">
+                      <h6>Name: <%= @user.full_name %></h6>
+                      <h6>Company: <%= @user.company.name.titleize %></h6>
+                      <h6>Email: <%= @user.email %></h6>
+                    </div>
+                    <div class="col-md-12">
+                      <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right"></span> Recent Job Postings</h4>
+                      <table class="table table-hover table-striped">
+                          <tbody>
+                            <% @user.company.job_postings.take(5).each do |posting| %>
+                               <tr>
+                                  <td>
+                                    <strong><%= posting.title %></strong> <%= posting.employment_type %> <strong> <%= posting.created_at %></strong>
+                                  </td>
+                              </tr>
+                            <% end %>
+                          </tbody>
+                      </table>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+                        <%= button_to 'Edit', edit_company_user_path(@company, @user), method: :get, class: "btn btn-primary" %>
+                        <%= button_to 'Remove my account', company_user_path(@company, @user), method: :delete, class: "btn btn-danger" %>
+                      </div>
+                    </div>
                 </div>
-              </div>
-          </div>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="col-lg-4 pull-lg-8 text-xs-center">
-      <%= image_tag(@user.icon, size: "150x150", alt: "avatar") %>
-    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
