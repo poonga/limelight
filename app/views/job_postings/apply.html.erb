@@ -1,0 +1,178 @@
+<section>
+    <div class="container">
+        <%= render partial: 'layouts/menu', locals: { parent: "#{@company.name.titleize}", child: @job_posting.title } %>
+
+        <!-- Job Posting -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h1><%= @job_posting.company.name.titleize %>: <%= @job_posting.title %></h1>
+            </div>
+            <div class="card-body">
+                <table class="table-responsive">
+                    <tbody>
+                      <tr>
+                        <td><b>Job Type:</b></td>
+                        <td><%= @job_posting.employment_type.humanize %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Team:</b></td>
+                        <td><%= @job_posting.team.name %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Description:</b></td>
+                        <td><%= raw(@job_posting.description) %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Years of Experience:</b></td>
+                        <td><%= @job_posting.years_of_experience %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Salary:</b></td>
+                        <td><%= @job_posting.min_salary %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Date Posted:</b></td>
+                        <td><%= @job_posting.created_at %></td>
+                      </tr>
+                      <tr>
+                        <td><b>Apply:</b></td>
+                        <td><%= button_to 'Apply', new_job_posting_applicant_path(@job_posting), method: :get, class: 'btn btn-primary btn-md btn-block' %></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer small text-muted">Updated <%= @job_posting.updated_at %></div>
+        </div>
+
+        <!-- Other Job Posting -->
+        <div class="row">
+            <h2 class="text-center">
+                <span>Other positions at <%= @company.name.titleize %></span>Last posted <%= @company.job_postings.last.updated_at %>
+            </h2>
+            <div class="col-md-8 offset-md-2">
+                <div class="bd-example" data-example-id="">
+                    <div id="accordion" role="tablist" aria-multiselectable="true">
+
+                    <% @company.teams.each do |team| %>
+                        <div class="card">
+                            <div class="card-header" role="tab" id="heading-<%= team.id %>">
+                                <div class="mb-0">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#<%= team.id %>" aria-expanded="false" aria-controls="<%= team.id %>" class="collapsed">
+                                      <i class="fa  fa-building-o" aria-hidden="true"></i>
+                                        <h3><%= team.name %></h3>
+                                    </a>
+                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div id="<%= team.id %>" class="collapse" role="tabpanel" aria-labelledby="heading-<%= team.id %>" aria-expanded="false" style="">
+                                <% team.job_postings.each do |job_posting| %>
+                                    <div class="card-block">
+                                        <div class="row">
+                                            <div class=col-md-6>
+                                              <%= job_posting.title %>
+                                            </div>
+                                            <div class=col-md-4>
+                                              <%= job_posting.employment_type.humanize %>
+                                            </div>
+                                            <div class=col-md-2>
+                                              <%= button_to "Apply", company_job_posting_path(@company, job_posting), class: "btn btn-primary btn-block btn-sm", method: :get %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+  @import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
+  a, a:hover, a:focus{outline:none; text-decoration:none;}
+
+  body{
+      font-family: 'Open Sans', sans-serif;
+  }
+
+  table tr { height: 60px; }
+
+  h2{float:left; width:100%; color:#fff; margin-bottom:30px; font-size: 14px;}
+  h2 span{display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px; font-weight:700}
+  h2 a{color:#fff; font-weight:bold;}
+
+
+  section{
+    float:left;
+    width:100%;
+    background: #43cea2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding:30px 0;
+  }
+
+  .card {
+      -moz-box-direction: normal;
+      -moz-box-orient: vertical;
+      background-color: #fff;
+      border-radius: 0.25rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin-bottom:1px;
+      border:none;
+  }
+  .card-header:first-child {
+      border-radius: 0;
+  }
+  .card-header {
+      background-color: #f7f7f9;
+      margin-bottom: 0;
+      padding: 20px 1.25rem;
+      border:none;
+  }
+  .card-header a i{
+      float:left;
+      font-size:25px;
+      padding:5px 0;
+      margin:0 25px 0 0px;
+      color:#195C9D;
+  }
+  .card-header i{
+      float:right;
+      font-size:30px;
+      width:1%;
+      margin-top:8px;
+      margin-right:10px;
+  }
+  .card-header a{
+      width:97%;
+      float:left;
+      color:#565656;
+  }
+  .card-header p{
+      margin:0;
+  }
+
+  .card-header h3{
+      margin:0 0 0px;
+      font-size:20px;
+      font-family: 'Slabo 27px', serif;
+      font-weight:bold;
+      color:#3fc199;
+  }
+  .card-block {
+      -moz-box-flex: 1;
+      flex: 1 1 auto;
+      padding: 20px;
+      color:#232323;
+      box-shadow:inset 0px 4px 5px rgba(0,0,0,0.1);
+      border-top:1px solid #000;
+      border-radius:0;
+  }
+</style>

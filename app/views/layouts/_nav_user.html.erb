@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">limelight</a>
+    <%= link_to 'limelight', root_path, class: 'navbar-brand' %>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,78 +11,56 @@
                   <span class="nav-link-text">Dashboard</span>
               <% end %>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <%= link_to company_user_path(@company, current_user), class: 'nav-link' do %>
-                    <i class="fa fa-fw fa-user-o"></i>
-                    <span class="nav-link-text">Employee Profile</span>
-                <% end %>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="New Job Listing">
                 <%= link_to new_company_job_posting_path, class: 'nav-link' do %>
                     <i class="fa fa-fw fa-user-plus"></i>
                     <span class="nav-link-text">New Job Listing</span>
                 <% end %>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Recruiting Performance">
+                <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">Recruiting Performance</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link" href="tables.html">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Communication">
+                <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-comments-o"></i>
                     <span class="nav-link-text">Communication</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Applicants</span>
-          </a>
-                <ul class="sidenav-second-level collapse" id="collapseMulti">
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-                        <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Applicants">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-fw fa-sitemap"></i>
+                    <span class="nav-link-text">Applicants</span>
+                </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="<%= @company.name.titleize %> Resources">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-link"></i>
                     <span class="nav-link-text"><%= @company.name.titleize %> Resources</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Employee Profile">
+                <%= link_to company_user_path(@company, current_user), class: 'nav-link' do %>
+                    <i class="fa fa-fw fa-user-o"></i>
+                    <span class="nav-link-text">Employee Profile</span>
+                <% end %>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
                   <i class="fa fa-fw fa-wrench"></i>
                   <span class="nav-link-text">Settings</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
-                        <a href="navbar.html">Navbar</a>
+                        <a href="#">Account</a>
                     </li>
                     <li>
-                        <a href="cards.html">Cards</a>
+                        <a href="#">Privacy</a>
+                    </li>
+                    <li>
+                        <a href="#">Upgrade Plan</a>
                     </li>
                 </ul>
             </li>
@@ -195,8 +173,6 @@
     <div class="container-fluid">
         <%= yield %>
     </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
     <footer class="sticky-footer">
         <div class="container">
             <div class="text-center">

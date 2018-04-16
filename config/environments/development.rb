@@ -57,4 +57,6 @@ Rails.application.configure do
 
   # Include font files to Assets
   config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+
+  config.paperclip_defaults = { storage: :fog, fog_credentials: { provider: "Local", local_root: "#{Rails.root}/public/resumes"}, fog_directory: "", fog_host: "localhost"}
 end

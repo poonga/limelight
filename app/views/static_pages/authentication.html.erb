@@ -6,9 +6,9 @@
                 <form class="login-form">
                     <div class="form-group">
                         <%= link_to login_path, class: "btn btn-block btn-social btn-primary googleSignUp" do %>
-                            <%= image_tag("google.svg") %>
+                            <%= image_tag "google.svg", class: "google-svg" %>
                             <span>Continue with Google</span>
-                            <% end %>
+                        <% end %>
                     </div>
                     <hr>
                     <p class="text-center">or</p>
@@ -67,10 +67,128 @@
         </div>
     </div>
 </section>
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-  <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Limelight</p>
-  </div>
-  <!-- /.container -->
-</footer>
+
+<style>
+    .googleSignUp {
+        line-height: normal;
+        text-align: center;
+        justify-content: space-between;
+        letter-spacing: .25px;
+        border-radius: 4px;
+    }
+
+    .google-svg {
+        padding: 3px 3px 3px 3px;
+    }
+
+    .login-block {
+        background: #DE6262;
+
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #00C9FF,  #92FE9D);
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #00C9FF,  #92FE9D);
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        float: left;
+        width: 100%;
+        padding: 5% 0 25% 0;
+    }
+
+    .banner-sec {
+        background: url(px1.jpg) no-repeat left bottom;
+        background-size: cover;
+        min-height: 500px;
+        border-radius: 0 10px 10px 0;
+        padding: 0;
+    }
+
+    .login-block .container {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-inner {
+        border-radius: 0 10px 10px 0;
+    }
+
+    .carousel-caption {
+        text-align: left;
+        left: 5%;
+    }
+
+    .login-sec {
+        padding: 50px 30px;
+        position: relative;
+    }
+
+    .login-sec .copy-text {
+        position: absolute;
+        width: 80%;
+        bottom: 20px;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .login-sec .copy-text i {
+        color: #FEB58A;
+    }
+
+    .login-sec .copy-text a {
+        color: #E36262;
+    }
+
+    .login-sec h2 {
+        margin-bottom: 30px;
+        font-weight: 800;
+        font-size: 30px;
+        color: #080808;
+    }
+
+    .login-sec h2:after {
+        content: " ";
+        width: 100px;
+        height: 5px;
+        background: #080808;
+        display: block;
+        margin-top: 20px;
+        border-radius: 3px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn-login {
+        background: #080808;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .banner-text {
+        text-shadow: 0px 0px 3px #000;
+        width: 70%;
+        position: absolute;
+        bottom: 40px;
+        padding-left: 20px;
+    }
+
+    .banner-text h2 {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .banner-text h2:after {
+        content: " ";
+        width: 100px;
+        height: 5px;
+        background: #FFF;
+        display: block;
+        margin-top: 20px;
+        border-radius: 3px;
+    }
+
+    .banner-text p {
+        color: #fff;
+    }
+</style>
