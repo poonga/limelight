@@ -1,6 +1,6 @@
 class ApplicantsController < ApplicationController
-  skip_before_action :ensure_signed_in, only: [:new, :show, :create]
-  before_action :set_applicant, only: [:show, :edit, :update, :destroy]
+  skip_before_action :ensure_signed_in, only: [:new, :show, :create, :thank_you]
+  before_action :set_applicant, only: [:show, :destroy, :thank_you]
   before_action :set_job_posting
 
   # GET /applicants
@@ -19,33 +19,15 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new
   end
 
-  # GET /applicants/1/edit
-  def edit
-  end
-
   # POST /applicants
   # POST /applicants.json
   def create
     @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
-      redirect_to job_posting_applicant_path(@job_posting, @applicant), notice: 'Applicant was successfully created.'
+      redirect_to job_posting_applicant_thank_you_path(@job_posting, @applicant)
     else
       render :new
-    end
-  end
-
-  # PATCH/PUT /applicants/1
-  # PATCH/PUT /applicants/1.json
-  def update
-    respond_to do |format|
-      if @applicant.update(applicant_params)
-        format.html { redirect_to @applicant, notice: 'Applicant was successfully updated.' }
-        format.json { render :show, status: :ok, location: @applicant }
-      else
-        format.html { render :edit }
-        format.json { render json: @applicant.errors, status: :unprocessable_entity }
-      end
     end
   end
 
@@ -57,6 +39,9 @@ class ApplicantsController < ApplicationController
       format.html { redirect_to applicants_url, notice: 'Applicant was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def thank_you
   end
 
   private
@@ -77,7 +62,7 @@ class ApplicantsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_applicant
-    @applicant = Applicant.friendly.find(params[:id])
+    @applicant = Applicant.friendly.find(params[:applicant_id])
   end
 
   def set_job_posting
