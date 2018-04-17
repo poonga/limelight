@@ -52,7 +52,10 @@ class ApplicantsController < ApplicationController
       :first_name,
       :last_name,
       :email,
-      :resume
+      :resume,
+      :website_url,
+      :linkedin_url,
+      :phone_numnber
     )
   end
 
