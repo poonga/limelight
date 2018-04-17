@@ -33,6 +33,7 @@ class CompaniesController < ApplicationController
 
   def stats
     @job_postings = JobPosting.all.includes(:team)
+    @applicants = Applicant.all
   end
 
   private
