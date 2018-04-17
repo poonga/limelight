@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :job_postings, only: [] do
-    resources :applicants
+    resources :applicants do
+      get :thank_you
+    end
   end
 
   # authentication

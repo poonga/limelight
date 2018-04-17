@@ -30,6 +30,8 @@ gem 'jquery-rails'
 gem 'friendly_id', '~> 5.1.0'
 # Easy upload management for ActiveRecord
 gem 'paperclip', '~> 5.2.0'
+gem 'fog'
+
 # User Authentication
 gem 'devise'
 gem 'omniauth-google-oauth2'

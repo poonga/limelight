@@ -1,46 +1,122 @@
-<div class="container" style="background-color: WhiteSmoke; border-radius: 15px; border:3px solid LightGray
-    padding: 20px; ">
-      <div class="row">
-      <div class="col-md-12">
-      </div>
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h1 class="panel-title"><font size="+9"> <%= @job_posting.title %></font> </h1>
-              <h5><b> Company: </b><%= @job_posting.company.name%></h5>
-              <a href="#" class="btn btn-primary">APPLY FOR THIS JOB</a>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class=" col-md-12 col-lg-12 ">
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td><b>Job Type:</b></td>
-                        <td><%= @job_posting.employment_type %></td>
-                      </tr>
-                      <tr>
-                        <td><b>Description:</b></td>
-                        <td> <p><%= raw(@job_posting.description) %></p></td>
-                      </tr>
-                      <tr>
-                        <td><b>Years of Experience:</b></td>
-                        <td><%= @job_posting.years_of_experience %></td>
-                      </tr>
-                      <tr>
-                        <td><b>Salary: </b></td>
-                        <td><%= @job_posting.min_salary %></td>
-                      </tr>
-                        <tr>
-                        <td><b>Date Posted: </b></td>
-                        <td><%= @job_posting.created_at %></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <%= link_to 'Apply', new_job_posting_applicant_path(@job_posting) %>
-                </div>
-              </div>
-            </div>
-          </div>
+<%= render partial: 'layouts/menu', locals: { parent: "#{@company.name.titleize}", child: @job_posting.title } %>
+<!-- Job Posting -->
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" width="100%" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td><b>Job Type</b></td>
+                  <td><%= @job_posting.employment_type.humanize %></td>
+                </tr>
+                <tr>
+                  <td><b>Team</b></td>
+                  <td><%= @job_posting.team.name %></td>
+                </tr>
+                <tr>
+                  <td><b>Description</b></td>
+                  <td><p><%= raw(@job_posting.description) %></p></td>
+                </tr>
+                <tr>
+                  <td><b>Years of Experience</b></td>
+                  <td><%= @job_posting.years_of_experience %></td>
+                </tr>
+                <tr>
+                  <td><b>Salary</b></td>
+                  <td><%= @job_posting.min_salary %></td>
+                </tr>
+                <tr>
+                  <td><b>Date Posted</b></td>
+                  <td><%= @job_posting.created_at %></td>
+                </tr>
+                <tr>
+                  <td><b>Share or Post</b></td>
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <%= link_to "https://www.glassdoor.com", class: "btn btn-success", role: "button", target: "_blank" do %>
+                        <i class="fa fa-glass" aria-hidden="true"></i> Glassdoor
+                      <% end %>
+                      <%= link_to "https://www.linkedin.com", class: "btn btn-info", role: "button", target: "_blank" do %>
+                        <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn
+                      <% end %>
+                      <%= link_to "https://www.indeed.com", class: "btn btn-warning", role: "button", target: "_blank" do %>
+                        <i class="fa fa-telegram" aria-hidden="true"></i> Indeed
+                      <% end %>
+                      <%= link_to "https://www.dice.com", class: "btn btn-danger", role: "button", target: "_blank" do %>
+                        <i class="fa fa-superpowers" aria-hidden="true"></i> Dice
+                      <% end %>
+                      <%= link_to "https://www.facebook.com", class: "btn btn-primary", role: "button", target: "_blank" do %>
+                        <i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook
+                      <% end %>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
         </div>
+    </div>
+    <div class="card-footer small text-muted">Updated <%= @job_posting.updated_at %></div>
+</div>
+
+<!-- Applicants -->
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>Applicants</h3>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="applicants-table" width="100%" cellspacing="0">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col"><i class="fa fa-envelope" aria-hidden="true"></i> Email</th>
+                    <th scope="col"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Resume</th>
+                    <th scope="col"><i class="fa fa-retweet" aria-hidden="true"></i> Status</th>
+                    <th scope="col"><i class="fa fa-phone-square" aria-hidden="true"></i> Contact</th>
+                    <th scope="col"><i class="fa fa-address-card-o" aria-hidden="true"></i> Website</th>
+                    <th scope="col"><i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @applicants.each do |applicant| %>
+                    <tr>
+                        <td><%= applicant.first_name %></td>
+                        <td><%= applicant.last_name %></td>
+                        <td><%= applicant.email %></td>
+                        <td>
+                            <button type="button" class="btn btn-secondary btn-sm btn-view-pdf" data-toggle="modal" data-target="#resume-modal" id="/resumes/<%= applicant.resume.path %>">View</button>
+                        </td>
+                        <td><%= applicant.status %></td>
+                        <td><%= applicant.phone_number %></td>
+                        <td><%= link_to applicant.website_url.truncate(25), applicant.website_url, target: "_blank" %></td>
+                        <td><%= link_to applicant.linkedin_url.truncate(25), applicant.linkedin_url, target: "_blank" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="resume-modal" tabindex="-1" role="dialog" aria-labelledby="resume-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resume-modal-label">Resume</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+          <div class="embed-responsive embed-responsive-16by9">
+              <embed class="embed-responsive-item" id="pdf-iframe" allowfullscreen>
+          </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
 </div>
