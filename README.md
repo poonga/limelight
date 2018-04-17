@@ -42,9 +42,11 @@ We are using [Ruby on Rails](http://rubyonrails.org/) with [Bootstrap](http://ge
 
 **Necessary Technologies:**
 - HTML
-- CSS 
+- SASS & Bootstrap 4
 - Javascript
-- Ruby
+- Ruby 2.5
+- Rails 5 (MVC, ActiveRecord ORM)
+- PostgreSQL
 
 **Integration & Services:**
 - Codacy
