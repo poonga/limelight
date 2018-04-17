@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :companies, only: [:edit, :update, :show] do
+  resources :companies, only: [:edit, :update, :show, :stats] do
+    get 'stats'
     resources :users, only: [:edit, :update, :show, :destroy]
     resources :teams
     resources :locations

@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :stats]
 
   # GET /companies/1
   # GET /companies/1.json
@@ -15,11 +15,9 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { render :show, status: :ok, location: @company }
+        redirect_to @company, notice: 'Company was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
+        render :edit
       end
     end
   end
@@ -29,15 +27,19 @@ class CompaniesController < ApplicationController
   def destroy
     @company.destroy
     respond_to do |format|
-      format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to companies_url, notice: 'Company was successfully destroyed.'
     end
+  end
+
+  def stats
+    @job_postings = JobPosting.all.includes(:team)
+    @applicants = Applicant.all
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company
-      @company = Company.friendly.find(params[:id])
+      @company = Company.friendly.find(params[:company_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

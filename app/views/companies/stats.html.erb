@@ -1,0 +1,19 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i>Applicants By Date</div>
+    <div class="card-body">
+      <div class='row'>
+        <div class='col-6'>
+          Applicants By Date
+          <%= line_chart @applicants.group_by_day(:created_at).count, adapter: "chartjs" %>
+        </div>
+        <div class='col-6'>
+          Jobs Created By Date
+          <%= line_chart @job_postings.group_by_day(:created_at).count, adapter: "chartjs" %>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+<%= render 'performance_by_teams' %>
