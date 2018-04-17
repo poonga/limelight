@@ -37,7 +37,8 @@ JobPosting.all.each do |posting|
       phone_number: Faker::PhoneNumber.cell_phone,
       website_url: Faker::Avatar.image,
       linkedin_url: Faker::Avatar.image,
-      job_posting_id: posting.id
+      job_posting_id: posting.id,
+      created_at: Faker::Number.between(0, 90).days.ago
     )
   end
 end

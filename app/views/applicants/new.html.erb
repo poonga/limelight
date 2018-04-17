@@ -11,7 +11,7 @@
                 <%= bootstrap_form_with(model: @applicant, url: job_posting_applicants_path(@job_posting), local: true) do |f| %>
                   <% if @applicant.errors.any? %>
                   <div id="error_explanation">
-                    <h2><%= pluralize(applicant.errors.count, "error") %> prohibited this applicant from being saved:</h2>
+                    <h2><%= pluralize(@applicant.errors.count, "error") %> prohibited this applicant from being saved:</h2>
                     <ul>
                       <% @applicant.errors.full_messages.each do |message| %>
                       <li><%= message %></li>
@@ -143,4 +143,3 @@
       border-radius:0;
   }
 </style>
-
