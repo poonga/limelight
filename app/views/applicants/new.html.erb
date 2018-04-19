@@ -9,48 +9,22 @@
             </div>
             <div class="card-body">
                 <%= bootstrap_form_with(model: @applicant, url: job_posting_applicants_path(@job_posting), local: true) do |f| %>
-                  <% if @applicant.errors.any? %>
-                  <div id="error_explanation">
-                    <h2><%= pluralize(@applicant.errors.count, "error") %> prohibited this applicant from being saved:</h2>
-                    <ul>
-                      <% @applicant.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-                  <% end %>
-
-                  <div class="col-sm-12">
                     <div class="form-group">
-                      <div class="col-sm-6">
-                        <%= f.text_field :first_name, label: "First Name" %>
-                      </div>
-                      <div class="col-sm-6">
-                        <%= f.text_field :last_name, label: "Last Name" %>
-                      </div>
-                      <div class="col-sm-6">
-                        <%= f.text_field :email, label: "Email" %>
-                      </div>
-                      <div class="col-sm-6">
-                        <%= f.text_field :phone_number, label: "Phone" %>
-                      </div>
-                      <div class="col-sm-6">
-                        <%= f.text_field :linkedin_url, label: "Linkedin URL" %>
-                      </div>
-                      <div class="col-sm-6">
-                        <%= f.text_field :website_url, label: "Website URL" %>
-                      </div>
-                      <div class="col-sm-6" >
-                          <%= f.file_field :resume, accept: 'application/pdf', class: 'form-control' %>
-                      </div>
+                        <div class="col-sm-8 offset-md-2">
+                            <%= f.text_field :first_name, label: "First Name" %>
+                            <%= f.text_field :last_name, label: "Last Name" %>
+                            <%= f.text_field :email, label: "Email" %>
+                            <%= f.text_field :phone_number, label: "Phone" %>
+                            <%= f.text_field :linkedin_url, label: "Linkedin URL" %>
+                            <%= f.text_field :website_url, label: "Website URL" %>
+                            <%= f.text_area :additional_information, label: "Additional Information", placeholder: "Add a cover letter or anything else you want share.", rows: '5' %>
+                            <%= f.file_field :resume, accept: 'application/pdf', class: 'form-control' %>
+                            <div class="col-sm-8 offset-md-2">
+                              <%= f.submit "Apply", class: "btn btn-md btn-primary btn-block" %>
+                            </div>
+                        </div>
                     </div>
-                    <div class = "form-group">
-                      <div class = "col-sm-6">
-                        <%= f.submit "Apply", class: "btn btn-md btn-primary btn-block" %>
-                      </div>
-                    </div>
-                  </div>
-                  <% end %>
+                <% end %>
             </div>
             <div class="card-footer small text-muted">Updated <%= @job_posting.updated_at %></div>
         </div>
