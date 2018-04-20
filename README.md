@@ -64,6 +64,39 @@ Our website uses a Model-View-Controller (MVC) architecture pattern in accordanc
 
 ![Imgur](http://i.imgur.com/cIpNG8s.png)
 
+## Design
+
+[View Full Gallery](https://imgur.com/a/NRIq41j)
+
+**Landing Page**
+![Imgur](https://i.imgur.com/kBvMlIT.jpg)
+
+![Imgur](https://i.imgur.com/g2MqC5c.jpg)
+
+**About Us (pictures are not real)**
+![Imgur](https://i.imgur.com/pnwKgx1.jpg)
+
+**Dashboard**
+![Imgur](https://i.imgur.com/aEZchiL.jpg)
+
+**Performance Data**
+![Imgur](https://i.imgur.com/HCHDvrO.jpg)
+
+**New Job Posting**
+![Imgur](https://i.imgur.com/T4I3HFT.jpg)
+
+![Imgur](https://i.imgur.com/wQhjVTc.jpg)
+
+**Applicant Resume View**
+![Imgur](https://i.imgur.com/Tz0fV8c.jpg)
+
+**Applicant's Perspective - Applying to a Job**
+![Imgur](https://i.imgur.com/D8kCkHY.jpg)
+
+![Imgur](https://i.imgur.com/ZKY3gLa.jpg)
+
+![Imgur](https://i.imgur.com/ikr84iw.jpg)
+
 ## Development
 
 **How to develop**
