@@ -25,6 +25,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
+      resume_rank
       redirect_to job_posting_applicant_thank_you_path(@job_posting, @applicant)
     else
       render :new
@@ -70,6 +71,16 @@ class ApplicantsController < ApplicationController
 
   def set_job_posting
     @job_posting = JobPosting.find(params[:job_posting_id])
+  end
+
+  def resume_rank
+    resume_path = Rails.root.join('public/resumes/', @applicant.resume.path)
+    reader = PDF::Reader.new(resume_path.to_s)
+    contents = reader.pages.map(&:text).join(' ')
+
+    @weighted_keywords = Highscore::Content.new(contents).keywords.map do |kw|
+      [kw.text, kw.weight]
+    end.to_h
   end
 
 end
