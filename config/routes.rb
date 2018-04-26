@@ -4,7 +4,12 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :update, :show, :destroy]
     resources :teams
     resources :locations
-    resources :job_postings
+    resources :job_postings do
+      resources :applicants, only: [:contact, :email] do
+        get :contact
+        post :email
+      end
+    end
   end
 
   resources :job_postings, only: [] do

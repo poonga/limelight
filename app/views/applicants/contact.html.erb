@@ -1,0 +1,18 @@
+<%= render partial: 'layouts/menu', locals: { parent: @job_posting.title, child: @applicant.full_name } %>
+<div class="card mb-3">
+    <div class="card-header">
+        <%= "Emailing #{@applicant.full_name} for #{@job_posting.title} position" %>
+    </div>
+    <div class="card-body">
+        <%= bootstrap_form_with(model: @email, url: company_job_posting_applicant_email_path(@company, @job_posting, @applicant), local: true) do |f| %>
+            <%= f.text_field :subject, placeholder: "Enter a subject for this email..." %>
+            <%= f.text_area :body, 'data-provider': :summernote %>
+            <div class="row">
+                <div class="col-sm-12">
+                    <%= f.submit "Send", class: "btn btn-md btn-primary float-left" %>
+                    <%= button_to "Cancel", root_path, class: "btn btn-md btn-secondary float-right" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

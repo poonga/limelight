@@ -83,7 +83,7 @@
                     <tr>
                         <td><%= applicant.first_name %></td>
                         <td><%= applicant.last_name %></td>
-                        <td><%= applicant.email %></td>
+                        <td><%= link_to applicant.email, company_job_posting_applicant_contact_path(@company, @job_posting, applicant) %></td>
                         <td>
                             <button type="button" class="btn btn-secondary btn-sm btn-view-pdf" data-toggle="modal" data-target="#resume-modal" id="/resumes/<%= applicant.resume.path %>">View</button>
                         </td>
