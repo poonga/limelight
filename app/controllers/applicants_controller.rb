@@ -2,7 +2,7 @@ class ApplicantsController < ApplicationController
   skip_before_action :ensure_signed_in, only: [:new, :show, :create, :thank_you]
   before_action :set_applicant, only: [:show, :destroy, :thank_you, :contact, :email]
   before_action :set_job_posting
-  before_action :set_company
+  before_action :set_company, only: [:contact, :email]
 
   # GET /applicants
   # GET /applicants.json
