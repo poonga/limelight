@@ -25,6 +25,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
+      ResumeParser.perform_async(@job_posting.id, @applicant.id)
       redirect_to job_posting_applicant_thank_you_path(@job_posting, @applicant)
     else
       render :new
@@ -55,7 +56,7 @@ class ApplicantsController < ApplicationController
       :resume,
       :website_url,
       :linkedin_url,
-      :phone_numnber
+      :phone_number
     )
   end
 
@@ -71,5 +72,4 @@ class ApplicantsController < ApplicationController
   def set_job_posting
     @job_posting = JobPosting.find(params[:job_posting_id])
   end
-
 end

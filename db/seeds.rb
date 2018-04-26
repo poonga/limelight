@@ -29,6 +29,7 @@ JobPosting.all.each do |posting|
       last_name: Faker::Name.last_name,
       email: Faker::Internet.email,
       status: Applicant.statuses.keys.sample,
+      rank: Faker::Number.between(0, 100),
       resume: ActionDispatch::Http::UploadedFile.new(
         filename: File.basename(fake_resume),
         tempfile: fake_resume,
