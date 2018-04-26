@@ -72,6 +72,7 @@
                     <th scope="col">Last</th>
                     <th scope="col"><i class="fa fa-envelope" aria-hidden="true"></i> Email</th>
                     <th scope="col"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Resume</th>
+                    <th scope="col"><i class="fa fa-fw fa-sitemap" aria-hidden="true"></i>Rank</th>
                     <th scope="col"><i class="fa fa-retweet" aria-hidden="true"></i> Status</th>
                     <th scope="col"><i class="fa fa-phone-square" aria-hidden="true"></i> Contact</th>
                     <th scope="col"><i class="fa fa-address-card-o" aria-hidden="true"></i> Website</th>
@@ -87,6 +88,7 @@
                         <td>
                             <button type="button" class="btn btn-secondary btn-sm btn-view-pdf" data-toggle="modal" data-target="#resume-modal" id="/resumes/<%= applicant.resume.path %>">View</button>
                         </td>
+                        <td><%= applicant.rank %></td>
                         <td><%= applicant.status %></td>
                         <td><%= applicant.phone_number %></td>
                         <td><%= link_to applicant.website_url.truncate(25), applicant.website_url, target: "_blank" %></td>

@@ -38,8 +38,7 @@ class Applicant < ApplicationRecord
   has_attached_file :resume
   has_attached_file :cover_letter
   enum status: %i(pending interview review offered declined accepted)
-  validates_presence_of :first_name
-  validates_presence_of :last_name
+  validates :first_name, :last_name, :phone_number, presence: true
   validates :email, presence: true, format: { with: /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i, multiline: true }
   validates_attachment :resume, presence: true, content_type: { content_type:"application/pdf" }
 

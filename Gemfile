@@ -46,6 +46,13 @@ gem 'summernote-rails', '~> 0.8.10.0'
 gem "chartkick"
 gem "groupdate"
 
+# Document parsing and ranking
+gem 'pdf-reader'
+gem 'highscore'
+
+# Job processing
+gem 'sidekiq'
+
 group :development, :test do
   gem 'faker', '~> 1.8.7'
   gem 'awesome_print'       # Nicely format fields of objects
