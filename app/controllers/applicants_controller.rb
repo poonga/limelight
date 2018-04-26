@@ -1,7 +1,8 @@
 class ApplicantsController < ApplicationController
   skip_before_action :ensure_signed_in, only: [:new, :show, :create, :thank_you]
-  before_action :set_applicant, only: [:show, :destroy, :thank_you]
+  before_action :set_applicant, only: [:show, :destroy, :thank_you, :contact, :email]
   before_action :set_job_posting
+  before_action :set_company
 
   # GET /applicants
   # GET /applicants.json
@@ -29,6 +30,21 @@ class ApplicantsController < ApplicationController
       redirect_to job_posting_applicant_thank_you_path(@job_posting, @applicant)
     else
       render :new
+    end
+  end
+
+  def contact
+    @email = Email.new
+  end
+
+  def email
+    @email = Email.new email_params
+
+    if @email.valid?
+      ApplicantMailer.contact(current_user, @applicant, @email.subject, @email.body).deliver
+      redirect_to company_job_posting_path(@company, @job_posting), notice: "Email sent to #{@applicant.email}!"
+    else
+      render :contact
     end
   end
 
@@ -64,6 +80,10 @@ class ApplicantsController < ApplicationController
     strong_params.merge( job_posting_id: @job_posting.id.to_s )
   end
 
+  def email_params
+    params.require(:email).permit(:subject, :body)
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_applicant
     @applicant = Applicant.friendly.find(params[:applicant_id])
@@ -71,5 +91,9 @@ class ApplicantsController < ApplicationController
 
   def set_job_posting
     @job_posting = JobPosting.find(params[:job_posting_id])
+  end
+
+  def set_company
+    @company = Company.friendly.find(params[:company_id])
   end
 end
