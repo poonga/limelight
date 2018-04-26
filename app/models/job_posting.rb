@@ -26,7 +26,7 @@ class JobPosting < ApplicationRecord
   validates   :min_salary, numericality: true
   validates   :years_of_experience, numericality: { only_integer: true }, presence: true
 
-  def to_s_contents
-    return [title, description].join(' ')
+  def contents
+    [title, description].join(' ')
   end
 end

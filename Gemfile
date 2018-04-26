@@ -50,6 +50,8 @@ gem "groupdate"
 gem 'pdf-reader'
 gem 'highscore'
 
+# Job processing
+gem 'sidekiq'
 
 group :development, :test do
   gem 'faker', '~> 1.8.7'

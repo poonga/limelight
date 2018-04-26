@@ -25,8 +25,7 @@ class ApplicantsController < ApplicationController
     @applicant = Applicant.new(applicant_params)
 
     if @applicant.save
-      @applicant.rank = resume_rank
-      @applicant.save
+      ResumeParser.perform_async(@job_posting.id, @applicant.id)
       redirect_to job_posting_applicant_thank_you_path(@job_posting, @applicant)
     else
       render :new
@@ -57,7 +56,7 @@ class ApplicantsController < ApplicationController
       :resume,
       :website_url,
       :linkedin_url,
-      :phone_numnber
+      :phone_number
     )
   end
 
@@ -73,24 +72,4 @@ class ApplicantsController < ApplicationController
   def set_job_posting
     @job_posting = JobPosting.find(params[:job_posting_id])
   end
-
-  # Generates an integer rank of the matching keywords between the job posting
-  # and the applicant resume.
-  # @return rank [Integer] The number of matching key words between the job and resume.
-  def resume_rank
-    resume_path = Rails.root.join('public/resumes/', @applicant.resume.path)
-    reader = PDF::Reader.new(resume_path.to_s)
-    resume_contents = reader.pages.map(&:text).join(' ')
-
-    resume_keywords = Highscore::Content.new(resume_contents).keywords.map do |kw|
-      [kw.text, kw.weight]
-    end.to_h
-
-    job_keywords = Highscore::Content.new(@job_posting.to_s_contents).keywords.map do |kw|
-      [kw.text, kw.weight]
-    end.to_h
-
-    rank = (job_keywords.keys & resume_keywords.keys).count
-  end
-
 end
